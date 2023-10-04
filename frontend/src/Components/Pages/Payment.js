@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PaymentSuccessPopup from './PaymentSuccessPopup';
-import paymentsuccesspopup from './paymentsuccesspopup.css';
-import './payment.css'; // Import your CSS file
+import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
+import '../css/payment.css'; // Import your CSS file
 import axios from 'axios';
 
 const Payment = () => {

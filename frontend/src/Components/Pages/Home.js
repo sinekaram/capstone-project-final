@@ -1,7 +1,7 @@
 import React,{Fragment} from 'react'
 import TopNavbar from '../Header/TopNavbar'
 import Footer from '../Footer/Footer'
-import './Home.css'; // Import your CSS file for styling
+import '../css/Home.css'; // Import your CSS file for styling
 import { Carousel } from 'react-responsive-carousel';
 import HeaderSlider from '../Header/HeaderSlider';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import paymentsuccesspopup from './paymentsuccesspopup.css';
+import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
 const PaymentSuccessPopup = ({ referenceNumber, onClose}) => {
   return (
     <div className="payment-success-popup">

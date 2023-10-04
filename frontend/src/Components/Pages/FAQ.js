@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
-import './faq.css';
+import '../css/faq.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
