@@ -1,0 +1,51 @@
+/* Home.css */
+.content-container {
+    background-color: #5a287d; /* Set the background color to match the TopNavbar */
+    color: white; /* Set text color to white or a color that contrasts well */
+    padding: 20px; /* Add padding as needed */
+    text-align: center;
+    flex-grow: 1; /* Allow content to grow and fill available space */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children in a column */
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center vertically */
+    position: relative;
+    
+  }
+  .content {
+    flex-grow: 1; /* Allow this div to grow and fill the available space */
+    padding: 20px; /* Adjust the padding as needed */
+  }
+  
+  .span {
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    display: block;
+    margin-top: 0; /* Adjust the margin as needed to control the spacing between the content and TopNavbar */
+  }
+  
+  .span h2 {
+    margin-bottom: 20px; /* Add margin to separate the heading from the text */
+  }
+  
+  /* Define the spacer class */
+  .spacer {
+    background-color: white;
+    flex-grow: 1; 
+    padding : 200px;
+   
+  }
+
+  /* Home.css */
+  .right-corner-image {
+    object-fit: cover;
+    background-color: #5a287d;
+    position: absolute; /* Position the image absolutely within the container */
+    top: 10px; /* Adjust the top position as needed */
+    right: 0px; /* Adjust the right position as needed */
+    border: 0px solid #ccc; /* Add a border for better visibility */
+  }
+  
+  
