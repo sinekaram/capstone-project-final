@@ -31,7 +31,6 @@ const LoanHistoryDetails = () => {
             <p>Last Name: {loan.lastName}</p>
             <p>Date of Birth: {loan.dob}</p>
             <p>Aadhaar Card Number: {loan.aadhaarCard}</p>
-            <p>Address: {loan.address}</p>
             <p>Mobile Number: {loan.mobileNumber}</p>
             <p>Email: {loan.email}</p>
             <p>Monthly Income: {loan.monthlyIncome}</p>

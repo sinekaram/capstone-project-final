@@ -10,6 +10,8 @@ import EmiCalculator from "./Components/Pages/EmiCalculator";
 import CustomerSupport from "./Components/Pages/CustomerSupport";
 import Payment from "./Components/Pages/Payment";
 import LoginPage from './Components/Pages/LoginPage';
+import LoanApplicationForm from './Components/Pages/LoanApplicationForm';
+import LoanHistory from './Components/Pages/LoanHistory';
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About/>}/>
         <Route path="faq" element={<FAQ/>}/>
-        <Route path="emiCalculator" element={<EmiCalculator/>}/>
+        <Route path="/emi-calculator" element={<EmiCalculator/>}/>
+        <Route path="/apply-for-loan" element={<LoanApplicationForm/>}/>
+        <Route path="/loan-history" element={<LoanHistory/>}/>
         <Route path="customerSupport" element={<CustomerSupport/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path="/payment" element={<Payment/>}/>
