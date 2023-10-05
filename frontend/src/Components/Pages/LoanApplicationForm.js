@@ -8,7 +8,7 @@ const API_URL = 'http://localhost:8080/api';
 
 const LoanApplicationForm = () => {
   const [formData, setFormData] = useState({
-    // Define your form fields here
+    // Define your form fieldsac here
     firstName: '',
     lastName: '',
     dob: '', 
