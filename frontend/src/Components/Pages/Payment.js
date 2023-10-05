@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PaymentSuccessPopup from './PaymentSuccessPopup';
 import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
-import '../css/payment.css'; // Import your CSS file
+import '../css/payment.css'; 
 import axios from 'axios';
 
 const Payment = () => {
@@ -80,8 +80,7 @@ const Payment = () => {
     // Send a POST request to your backend endpoint
       const response = axios.post('http://localhost:8080/banking/payment', paymentInfo);
       console.log("referenceNumber:",response.data);
-      // const referenceNumber1 = response.data.referenceNumber;
-      // setReferenceNumber(referenceNumber1);
+      
       console.log('Payment successful', response.data);
       setShowSuccessPopup(true);
 
@@ -97,7 +96,6 @@ const Payment = () => {
       setIfscCode('');
       setUpiId('');
     } catch (error) {
-      // Handle errors, show error messages, etc.
       console.error('Error making payment', error);
     }
   };
