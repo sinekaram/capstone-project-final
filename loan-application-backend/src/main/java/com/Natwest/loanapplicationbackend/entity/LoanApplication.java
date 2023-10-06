@@ -2,7 +2,6 @@ package com.Natwest.loanapplicationbackend.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Date;
 
 @Document("loan_applications")
 public class LoanApplication {
@@ -20,7 +19,7 @@ public class LoanApplication {
     private Double loanAmount;
     private Integer loanTerm;
     private String typeOfLoan;
-    private String interestRateType;
+    private boolean approvalStatus = false;
 
     public String getId() {
         return id;
@@ -110,12 +109,12 @@ public class LoanApplication {
         this.typeOfLoan = typeOfLoan;
     }
 
-    public String getInterestRateType() {
-        return interestRateType;
+    public boolean isApprovalStatus() {
+        return approvalStatus;
     }
 
-    public void setInterestRateType(String interestRateType) {
-        this.interestRateType = interestRateType;
+    public void setApprovalStatus(boolean approvalStatus) {
+        this.approvalStatus = approvalStatus;
     }
 
     @Override
@@ -124,7 +123,7 @@ public class LoanApplication {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dob=" + dob +
+                ", dob='" + dob + '\'' +
                 ", aadhaarCard='" + aadhaarCard + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 ", email='" + email + '\'' +
@@ -132,7 +131,7 @@ public class LoanApplication {
                 ", loanAmount=" + loanAmount +
                 ", loanTerm=" + loanTerm +
                 ", typeOfLoan='" + typeOfLoan + '\'' +
-                ", interestRateType='" + interestRateType + '\'' +
+                ", approvalStatus=" + approvalStatus +
                 '}';
     }
 }
