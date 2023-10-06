@@ -25,10 +25,19 @@ const Payment = () => {
   const [paymentDate, setPaymentDate] = useState('');
   const [upiId, setUpiId] = useState('');
   const [paymentOption, setPaymentOption] = useState('full');
+  const [maskedCVV, setMaskedCVV] = useState('');
 
 
   const handlePaymentAmountChange = (e) => {
     setPaymentAmount(e.target.value);
+  };
+  const handleCVVChange = (e) => {
+    const cvvValue = e.target.value;
+    setCVV(cvvValue); // Update the actual CVV
+
+    // Create a masked CVV with asterisks
+    const maskedValue = '*'.repeat(cvvValue.length);
+    setMaskedCVV(maskedValue); // Update the masked CVV
   };
 
   const handlePaymentMethodChange = (e) => {
@@ -212,10 +221,10 @@ const Payment = () => {
                 <Form.Label className="payment-label">CVV</Form.Label>
                 <Form.Control
                     type="text"
-                    pattern="\d{3}" // Use pattern attribute to enforce 3 digits
-                    value={cvv}
-                    onChange={(e) => setCVV(e.target.value)}
+                    value={maskedCVV}
+                    onChange={handleCVVChange}
                     required
+                    pattern="\d{3}" // Use pattern attribute to enforce 3 digits
                     style={inputStyles}
                     onMouseEnter={handleInputHover}
                     onMouseLeave={handleInputBlur}

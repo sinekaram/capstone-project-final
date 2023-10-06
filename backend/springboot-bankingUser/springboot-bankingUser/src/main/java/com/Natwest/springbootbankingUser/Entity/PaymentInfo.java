@@ -30,5 +30,5 @@ public class PaymentInfo {
     private Date paymentDate;
     private String referenceNumber;
     private String upiID;
-
+   
 }
