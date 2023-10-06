@@ -1,0 +1,76 @@
+/* Style the Logout button with a different class */
+.logout-button {
+    background-color: #401664;
+    color: #fff;
+    margin-left: auto;
+    text-align: center; /* Center text horizontally */
+  }
+  
+  /* Style for the common properties of buttons */
+  .transaction-button {
+    background-color: #401664;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    
+  }
+  
+  /* Other common styles */
+  .centered-text {
+    text-align: center;
+    color: rgba(15, 1, 1, 0.851);
+    background-color: white;
+    border: 1px solid #f3f3fa;
+  }
+  
+  .payment-details-card {
+    padding: 10px;
+    border: 1px solid #f3f3fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+    height: 435px;
+    overflow-y: auto;
+  }
+  
+  .card {
+    padding: 10px;
+    border: 1px solid #f3f3fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  
+  /* Style the dialog content */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    background-color: #f78e99;
+  }
+  
+  /* Style the dialog actions */
+  .dialog-actions {
+    justify-content: center;
+  }
+  
+  /* Style the Loan Types dialog */
+  .dialog-title {
+    text-align: center;
+    width: auto;
+  }
+  
+  .app-title {
+    margin-top: 10px;
+  }
+  
+  .MuiDialog-paper {
+    background-color: #fedfe2;
+    /* You can change this color to your preferred background color */
+  }
+  
