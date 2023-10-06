@@ -138,17 +138,14 @@ p {
 }
 
 .chart-description p {
-
   font-size: 14px;
   color: #333;
 }
+
 /* Style for the banking image */
 .banking-image {
   margin-top: 50px;
-  max-width: 100%; /* Ensure the image does not exceed its container */
-  border-radius: 5px; /* Add rounded corners if desired */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-
-/* Additional styles can be added as needed */

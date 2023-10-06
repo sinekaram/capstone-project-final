@@ -78,7 +78,7 @@ const Payment = () => {
     };
     try {
     // Send a POST request to your backend endpoint
-      const response = axios.post('http://localhost:8080/banking/payment', paymentInfo);
+      const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
       console.log("referenceNumber:",response.data);
       
       console.log('Payment successful', response.data);
