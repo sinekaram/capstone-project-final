@@ -43,8 +43,11 @@ const TopNavbar = () => {
           </Nav>
           <Nav>
           <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-          <FaSignInAlt style={iconStyle}/>Login
-          </Link>
+              <FaSignInAlt style={iconStyle} /> Login
+            </Link>
+            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
+              Register <FaSignInAlt style={iconStyle} />
+            </Link>
 
             {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
             <FaSignInAlt style={iconStyle}/>Login</button> */}
