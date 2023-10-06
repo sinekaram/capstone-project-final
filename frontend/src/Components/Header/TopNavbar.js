@@ -37,7 +37,7 @@ const TopNavbar = () => {
             <NavLink to="/home" className="nav-link">Home</NavLink>
             <NavLink to="/about" className="nav-link">About</NavLink>
             <NavLink to="/faq" className="nav-link">FAQs</NavLink>
-            <NavLink to="/emiCalculator" className="nav-link">EMI Calculator</NavLink>
+            <NavLink to="/emi-calculator" className="nav-link">EMI Calculator</NavLink>
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
             <NavLink to="/contact" className="nav-link">Contact</NavLink>
           </Nav>

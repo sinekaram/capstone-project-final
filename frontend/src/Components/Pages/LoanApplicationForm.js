@@ -14,13 +14,13 @@ const LoanApplicationForm = () => {
     dob: '', 
     aadhaarCard: '',
     mobileNumber: '',
-    email: '',
+    email: '', 
     monthlyIncome: '',  
     loanAmount: '',
     typeOfLoan: 'personalLoan',
     loanTerm: '',
     interestRateType: 'fixed',
-    
+     
   });
 
   // Handle form field changes

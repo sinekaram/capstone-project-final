@@ -21,9 +21,15 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About/>}/>
         <Route path="faq" element={<FAQ/>}/>
+<<<<<<< HEAD
         <Route path="/apply-for-loan" element={<LoanApplicationForm />} />
         <Route path="/loan-history" element={<LoanHistory />} />
         <Route path="emiCalculator" element={<EmiCalculator/>}/>
+=======
+        <Route path="/emi-calculator" element={<EmiCalculator/>}/>
+        <Route path="/apply-for-loan" element={<LoanApplicationForm/>}/>
+        <Route path="/loan-history" element={<LoanHistory/>}/>
+>>>>>>> 8d5f82301fe612b9e126e5b2862819fc7fe76c19
         <Route path="customerSupport" element={<CustomerSupport/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path="/payment" element={<Payment/>}/>
