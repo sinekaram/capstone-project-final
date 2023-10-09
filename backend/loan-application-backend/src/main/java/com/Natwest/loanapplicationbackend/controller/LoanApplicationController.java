@@ -55,4 +55,9 @@ public class LoanApplicationController {
         loanApplicationService.deleteLoan(id);
         return ResponseEntity.noContent().build();
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1ebf46c2859a3f61b093d1eaa057c42ab202b346
 }

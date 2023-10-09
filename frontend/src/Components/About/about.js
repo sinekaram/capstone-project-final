@@ -31,10 +31,10 @@ function About() {
     fontSize: '30px',  // Custom font size
     fontWeight: 'bold',  // Custom font weight (bold)
     color: 'purple',  // Custom font color
-    marginTop: '20px', // Add margin on top
+    marginTop: '10px', // Add margin on top
     marginBottom: '10px', // Add margin on bottom
     marginLeft: '20px',
-    marginRight: '100px',
+    marginRight: '130px',
   };
 
   const homeLoanStyle = {
@@ -138,7 +138,7 @@ function About() {
   };
   const textContainerStyle3 = {
     flex: 1, // Allow text to take up remaining space
-    marginLeft: '600px', // Adjust left margin to move text more to the left
+    marginLeft: '500px', // Adjust left margin to move text more to the left
     marginRight: '0px', // Adjust right margin to move text more to the right
     marginTop: '40px', // Add margin on top
     alignItems:'Right',
@@ -146,49 +146,68 @@ function About() {
   const textContainerStyle4 = {
     flex: 1, // Allow text to take up remaining space
     marginLeft: '20px', // Adjust left margin to move text more to the left
-    marginRight: '500px', // Adjust right margin to move text more to the right
+    marginRight: '450px', // Adjust right margin to move text more to the right
     marginTop: '20px',
+  };
+  const textContainerStyle5 = {
+    flex: 1, // Allow text to take up remaining space
+    marginLeft: '430px', // Adjust left margin to move text more to the left
+    marginRight: '0px', // Adjust right margin to move text more to the right
+    marginTop: '40px', // Add margin on top
+    alignItems:'Right',
   };
 
   const imageStyle = {
     maxWidth: '50%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '0px', // Add margin on top
-    marginRight: '20px',
+    marginTop: '-50px', // Add margin on top
+    marginRight: '40px',
   };
   const imageStyle1 = {
     maxWidth: '50%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '-150px', // Add margin on top
+    marginTop: '-200px', // Add margin on top
     marginRight: '550px',
+    marginBottom:'20px',
+    marginLeft: '40px',
+  
   };
   const imageStyle3 = {
     maxWidth: '30%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '-120px', // Add margin on top
-    marginRight: '80px',
+    marginTop: '-200px', // Add margin on top
+    marginRight: '40px',
+    marginBottom:'20px'
   };
   const imageStyle4 = {
     maxWidth: '40%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '-160px', // Add margin on top
-    marginRight: '50px',
+    marginTop: '-230px', // Add margin on top
+    marginRight: '-50px',
     marginLeft: '30px',
+    marginBottom:'20px'
   };
   const imageStyle5 = {
     maxWidth: '30%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '-160px', // Add margin on top
+    marginTop: '-210px', // Add margin on top
     marginRight: '50px',
     marginLeft: '30px',
+    marginBottom:'20px'
   };
   const imageStyle6 = {
     maxWidth: '30%', // Adjust the width as needed
     height: 'auto',
-    marginTop: '-160px', // Add margin on top
+    marginTop: '-250px', // Add margin on top
     marginRight: '50px',
     marginLeft: '30px',
   };
+  // const handleContinue = () => {
+  //   if (!email || !password) {
+  //     setError("Enter all the fields");
+  //     setOpenSnackbar(true);
+  //     return;
+  //   }
 
   return (
     <Fragment>
@@ -208,6 +227,16 @@ function About() {
                 families, and businesses we serve in communities throughout the UK and Ireland can
                 rebuild and thrive. If our customers succeed, so will we.
               </Typography>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          {/* <Button
+            variant="contained"
+            color="primary"
+            //onClick={navigate("/admin");}
+            style={{ backgroundColor: '#572780', color: 'white', }}
+          >
+            Continue
+          </Button> */}
+        </div>
             </div>
             <img
               src="/Images/about.jpg" // Replace with the correct image path and extension
@@ -224,7 +253,7 @@ function About() {
           </Typography>
           <div style={textContainerStyle1}>
             <Typography variant="body1">
-              Experience financial freedom with our personal loans. Whether it's for unexpected expenses, a dream vacation, or consolidating debt, our competitive interest rates and hassle-free application process will help you achieve your goals with ease.
+            "Experience a world of financial opportunities with our personal loans. Whether it's an unexpected expense, your dream vacation, or consolidating debt for a brighter future, our competitive 5% interest rates and effortless application process are your keys to success. With a generous maximum term of 5 years, we're dedicated to helping you realize your financial goals and enjoy the journey towards a better tomorrow."
             </Typography>
           </div>
           <img
@@ -258,7 +287,11 @@ function About() {
           </Typography>
           <div style={textContainerStyle2}>
             <Typography variant="body1">
-            Unlock your dream of homeownership with our tailored home loans. Choose from a variety of options with competitive interest rates, enjoy tax benefits, and start building equity in your future. Let us guide you towards your ideal home.
+           
+              "Imagine the keys to your dream home in your hands! Our tailored home loans open doors to your homeownership aspirations. With an array of options boasting competitive interest rates and the added perk of tax benefits, you're not just buying a house; you're securing your future. Let us be your trusted partner, leading you to the home you've always envisioned."
+                Lowest interest rate: 3.5%
+
+                  Maximum term: 30 years
             </Typography>
           </div>
           <img
@@ -275,7 +308,7 @@ function About() {
           </Typography>
           <div style={textContainerStyle3}>
             <Typography variant="body1">
-            Drive your dreams with our car loans. Get behind the wheel of your dream vehicle with affordable interest rates and flexible repayment options. Start your journey towards owning a new car today.
+            "Experience the thrill of driving your dream car with our car loans. Our competitive 4% interest rates and flexible repayment options are tailored to put you in the driver's seat of the vehicle you desire. Start your journey towards car ownership today and trust us to be your partner on the road to making your dream car a reality. With a maximum term of 7 years, we're committed to providing you with the financing you need to hit the open road with confidence and satisfaction."
             </Typography>
           </div>
           <img
@@ -292,7 +325,7 @@ function About() {
           </Typography>
           <div style={textContainerStyle4}>
             <Typography variant="body1">
-            Invest in your future with our student loans. Pursue your education with ease through competitive interest rates and student-friendly repayment plans. Let us support your academic journey.
+            "Invest in your education and future with our student loans. Our education-focused loans come with a competitive 3% interest rate and student-friendly repayment plans designed to ease your financial burden while pursuing your academic goals. Let us be your partner in supporting your educational journey, and with a maximum term of 15 years, we're committed to helping you achieve your educational dreams and build a strong foundation for your future success."
             </Typography>
           </div>
           <img
@@ -307,9 +340,10 @@ function About() {
           <Typography variant="h5" gutterBottom style={businessloan}>
             Business Loan
           </Typography>
-          <div style={textContainerStyle3}>
+          <div style={textContainerStyle5}>
             <Typography variant="body1">
-            Fuel your entrepreneurial ambitions with our small business loans. Access the capital you need to grow and succeed, with flexible terms and competitive interest rates. Start building your business today.
+            
+            "Empower your entrepreneurial journey with our small business loans. Access the capital essential for your business's growth and prosperity, backed by our flexible terms and a competitive interest rate of 4.5%. Begin forging the future of your business today, and rely on us as your trusted partner in realizing your business aspirations. With a maximum term of 10 years, we're dedicated to providing the financial foundation needed for your business to thrive and reach new heights of success."
             </Typography>
           </div>
           <img

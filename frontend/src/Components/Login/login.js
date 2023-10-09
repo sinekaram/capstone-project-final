@@ -41,6 +41,7 @@ function Login() {
           alert("Login Successful");
           axios.post("http://localhost:8081/users/getId", user).then((resp) => {
             sessionStorage.setItem("id", resp.data);
+            sessionStorage.setItem("email", email);
             // const user_id = sessionStorage.getItem("id");
           })
           console.log(response)
