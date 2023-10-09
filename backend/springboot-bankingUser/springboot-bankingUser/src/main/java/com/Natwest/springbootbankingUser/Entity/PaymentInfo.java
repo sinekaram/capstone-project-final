@@ -16,7 +16,7 @@ import java.util.Date;
 @Document(collection="payment")
 public class PaymentInfo {
     @Id
-    private String id;
+    private String emailid;
     private BigDecimal paymentAmount;
     private String paymentMethod;
     private String cardNumber;

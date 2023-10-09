@@ -48,7 +48,7 @@ function Login() {
             navigate("/admin");
           }
           else {
-            navigate("/customer")
+            navigate("/userdashboard")
           }
 
         }

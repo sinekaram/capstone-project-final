@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="07b1170d-9710-4579-a2df-d4f1e637a9bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/aws.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Controller/FaqController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Entity/FaqInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Repository/FaqRepo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Service/FaqService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/SpringbootBankingFaqApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/test-classes/com/Natwest/springbootbankingFAQ/SpringbootBankingFaqApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/src/main/java/com/Natwest/springbootbankingUser/Entity/PaymentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-bankingUser/src/main/java/com/Natwest/springbootbankingUser/Entity/PaymentInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/target/classes/com/Natwest/springbootbankingUser/Entity/PaymentInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-bankingUser/target/classes/com/Natwest/springbootbankingUser/Entity/PaymentInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2WQO6iWmKO60J1UjufXd9stel3B" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project-final/backend/springboot-bankingUser/springboot-bankingUser",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07b1170d-9710-4579-a2df-d4f1e637a9bb" name="Changes" comment="" />
+      <created>1696661167152</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696661167152</updated>
+      <workItem from="1696661174394" duration="95000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
