@@ -3,8 +3,6 @@ import TopNavbar from '../Header/TopNavbar'
 import Footer from '../Footer/Footer';
 import '../css/Home.css'; // Import your CSS file for styling
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import CarouselSection from './CarouselSection';
-
 
 
 
@@ -62,7 +60,6 @@ const Home = () => {
         </div>
         
       </section> */}
-      <CarouselSection/>
       <div clasName="spacer">
       <div className="image-gallery">
         <div className="image-container">

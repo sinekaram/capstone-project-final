@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class LoginController {
 
     @Autowired
