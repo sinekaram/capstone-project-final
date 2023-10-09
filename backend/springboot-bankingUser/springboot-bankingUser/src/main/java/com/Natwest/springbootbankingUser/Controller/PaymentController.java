@@ -23,9 +23,9 @@ public class PaymentController {
         PaymentInfo savedPayment = paymentService.addPayment(paymentInfo);
         return new ResponseEntity<>(savedPayment, HttpStatus.OK);
     }
-    @GetMapping("/payment/{emailid}")
-    public Optional<PaymentInfo> getPaymentByEmailId(@PathVariable String emailid){
-        return paymentService.getPaymentByEmailId(emailid);
+    @GetMapping("/payment/{email}")
+    public Optional<PaymentInfo> getPaymentByEmail(@PathVariable String email){
+        return paymentService.getPaymentByEmail(email);
     }
 
 

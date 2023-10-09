@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface LoanApplicationRepository extends MongoRepository<LoanApplication, String> {
-    Optional<LoanApplication> findByemail(String email);
+
+    LoanApplication findByemail(String email);
 }

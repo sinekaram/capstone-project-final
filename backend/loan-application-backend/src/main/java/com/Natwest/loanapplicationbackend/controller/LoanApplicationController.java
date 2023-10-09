@@ -37,6 +37,17 @@ public class LoanApplicationController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/loan/{email}")
+    public ResponseEntity<LoanApplication> getLoanByEmail(@PathVariable String email){
+        LoanApplication loan = loanApplicationService.getLoanByEmail(email);
+        if(loan != null){
+            System.out.println("in");
+            return ResponseEntity.ok(loan);
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/loan-history/{id}")
     public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
@@ -44,13 +55,5 @@ public class LoanApplicationController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/loan-history-email/{email}")
-    public ResponseEntity<LoanApplication> getLoanByEmail(@PathVariable String email) {
-        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanByEmail(email);
-        if (loanApplication.isPresent()) {
-            return ResponseEntity.ok(loanApplication.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+
 }

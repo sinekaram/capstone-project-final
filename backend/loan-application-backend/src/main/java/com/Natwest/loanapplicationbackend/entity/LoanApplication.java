@@ -19,7 +19,6 @@ public class LoanApplication {
     private String lastName;
     private String dob;
     private String aadhaarCard;
-
     private String mobileNumber;
     private String email;
     private Double monthlyIncome;
