@@ -9,10 +9,17 @@ const API_URL = 'http://localhost:8080/api';
 
 const LoanHistoryDetails = () => {
   const [loanHistory, setLoanHistory] = useState([]);
+  const email = sessionStorage.getItem("email"); // Retrieve email from session storage
 
   useEffect(() => {
+    if (!email) {
+      // Handle the case when email is not available in session storage
+      console.error('Email not found in session storage');
+      return;
+    }
+
     axios
-      .get(`${API_URL}/loan-history`)
+      .get(`${API_URL}/loan-history?email=${email}`) // Pass email as a query parameter
       .then((response) => {
         const dataWithEMI = response.data.map((loan) => {
           const principal = parseFloat(loan.loanAmount);
@@ -32,8 +39,7 @@ const LoanHistoryDetails = () => {
       .catch((error) => {
         console.error('Error fetching loan history:', error);
       });
-  }, []);
-
+  }, [email]); // Include email in the dependency array to re-fetch when it changes
 
   return (
     <div>

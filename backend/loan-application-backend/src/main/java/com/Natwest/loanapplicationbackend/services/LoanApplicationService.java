@@ -30,9 +30,7 @@ public class LoanApplicationService {
         loanApplicationRepository.deleteById(id);
     }
 
-    public Response<LoanApplication> getLoanByEmail(String email) {
-        return loanApplicationRepository.findByemail(email);
-    }
+
 }
 
 

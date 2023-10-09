@@ -13,42 +13,83 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-import LoanTypes from './LoanTypes';
-import Footer from "../Footer/Footer";
-import TopNavbar from '../Header/TopNavbar';
-import '../css/dashboardlayout.css'
 
-function DashboardLayout() {
+import LoanTypes from './LoanTypes';
+import Footer from '../Footer/Footer';
+import TopNavbar from '../Header/TopNavbar';
+import '../css/dashboardlayout.css';
+
+function PaymentCard({ paymentData }) {
+  const handleMakePayment = () => {
+    // Redirect to the '/payment' page when the button is clicked
+    window.location.href = '/payment';
+  };
+
+  return (
+    <Card className="payment-details-card">
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
+          Payment Details
+        </Typography>
+        <div style={{ marginBottom: '16px' }}>
+          <Typography variant="body2">
+            Total Loan Amount: {paymentData.totalAmount || 'N/A'}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: '16px' }}>
+          <Typography variant="body2">
+            Paid Loan Amount: {paymentData.paidAmount || 'N/A'}
+          </Typography>
+        </div>
+        <Typography variant="body2">
+          Due Date: {paymentData.dueDate || 'N/A'}
+        </Typography>
+        <div style={{ marginTop: '180px' }}>
+          <Button variant="contained" color="primary" onClick={handleMakePayment}>
+            Make a Payment
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function DashboardLayout({ id }) {
+  const user = { id: id };
   const [paymentData, setPaymentData] = useState({});
   const [openTransactionHistoryDialog, setOpenTransactionHistoryDialog] = useState(false);
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
 
-  const userId = sessionStorage.getItem("id");
-
-  // Check if a user is logged in based on userId
-  const isUserLoggedIn = !!userId;
-
   useEffect(() => {
+    Axios.get(`http://localhost:8082/users/${id}`)
+      .then((response) => {
+        const userData = response.data;
+        // You can use userData if needed
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+
     // Fetch payment data and set it in paymentData state here
-    Axios.get('/api/payment-details') // Replace with your API endpoint for payment details
+    Axios.get(`http://localhost:8080/loan-history`) // Replace with your API endpoint
       .then((response) => {
         setPaymentData(response.data);
       })
       .catch((error) => {
         console.error('Error fetching payment data:', error);
       });
-  }, []);
+  }, [id]);
 
   const handleOpenTransactionHistoryDialog = () => {
-    // Fetch transaction history data and set it in transactionHistory state here
-    Axios.get('/api/transaction-history') // Replace with your API endpoint for transaction history
-      .then((response) => {
-        setTransactionHistory(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching transaction history:', error);
-      });
+    // You should fetch and set transaction history data here
+    // Axios.get(`/api/transaction-history/${id}`) // Replace with your API endpoint
+    //   .then((response) => {
+    //     setTransactionHistory(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching transaction history:', error);
+    //   });
 
     setOpenTransactionHistoryDialog(true);
   };
@@ -65,6 +106,10 @@ function DashboardLayout() {
     setOpenLoanTypesDialog(false);
   };
 
+  useEffect(() => {
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
+
   return (
     <Fragment>
       <TopNavbar />
@@ -72,61 +117,51 @@ function DashboardLayout() {
         <AppBar position="static" className="app-bar">
           <Toolbar className="centered-text">
             <Typography variant="h4" className="app-title">
-              Welcome Back Customer
+              Welcome Back {user.firstName} {user.lastName}
             </Typography>
             <div style={{ marginLeft: 'auto' }}>
-          <Button
-            component={Link}
-            to="/home"
-            variant="contained"
-            style={{
-              backgroundColor: '#401664',
-              color: '#fff',
-              padding: '10px 20px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s',
-            }}
-          >
-              Logout
-            </Button>
+              <Button
+                component={Link}
+                to="/home"
+                variant="contained"
+                style={{
+                  backgroundColor: '#401664',
+                  color: '#fff',
+                  padding: '10px 20px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
+                }}
+              >
+                Logout
+              </Button>
             </div>
           </Toolbar>
         </AppBar>
         <br></br>
-            <br></br>
-
-
+        <br></br>
         <Container className="container">
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Card className="payment-details-card">
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Payment Details
-                  </Typography>
-                  <Typography variant="body2">
-                    Account Balance: {paymentData.balance || 'N/A'}
-                    <br />
-                    Due Date: {paymentData.dueDate || 'N/A'}
-                  </Typography>
-                </CardContent>
-              </Card>
+              <PaymentCard paymentData={paymentData} />
             </Grid>
-            
+  
             <Grid item xs={12} md={6}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <Card className="card" >
+                  <Card className="card">
                     <CardContent>
-                      <Typography  >
+                      <Typography>
                         <Button
-                         style={{backgroundColor: '#401664',color: '#fff',padding: '14px 170px',cursor: 'pointer',transition: 'background-color 0.3s'
-                        }}
+                          style={{
+                            backgroundColor: '#401664',
+                            color: '#fff',
+                            padding: '14px 170px',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s',
+                          }}
                           component={Link}
                           to="/apply-for-loan"
-                         variant="contained"
-                         
-                          
+                          variant="contained"
                         >
                           Apply for New Loan
                         </Button>
@@ -159,7 +194,7 @@ function DashboardLayout() {
                     </CardContent>
                   </Card>
                 </Grid>
-
+  
                 <Grid item xs={12}>
                   <Card className="card">
                     <CardContent>
