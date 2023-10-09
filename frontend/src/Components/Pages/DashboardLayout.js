@@ -24,6 +24,11 @@ function DashboardLayout() {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
 
+  const userId = sessionStorage.getItem("id");
+
+  // Check if a user is logged in based on userId
+  const isUserLoggedIn = !!userId;
+
   useEffect(() => {
     // Fetch payment data and set it in paymentData state here
     Axios.get('/api/payment-details') // Replace with your API endpoint for payment details
