@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/api")
 public class LoanApplicationController {
 
@@ -49,11 +49,10 @@ public class LoanApplicationController {
         }
     }
 
+
     @DeleteMapping("/loan-history/{id}")
     public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
         loanApplicationService.deleteLoan(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }
