@@ -44,13 +44,5 @@ public class LoanApplicationController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/loan-history-email/{email}")
-    public ResponseEntity<LoanApplication> getLoanByEmail(@PathVariable String email) {
-        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanByEmail(email);
-        if (loanApplication.isPresent()) {
-            return ResponseEntity.ok(loanApplication.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+
 }
