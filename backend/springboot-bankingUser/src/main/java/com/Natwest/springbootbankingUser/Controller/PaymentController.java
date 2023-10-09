@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,9 +24,15 @@ public class PaymentController {
         PaymentInfo savedPayment = paymentService.addPayment(paymentInfo);
         return new ResponseEntity<>(savedPayment, HttpStatus.OK);
     }
-    @GetMapping("/payment/{email}")
-    public Optional<PaymentInfo> getPaymentByEmail(@PathVariable String email){
-        return paymentService.getPaymentByEmail(email);
+    @GetMapping("/payment/{id}")
+    public Optional<PaymentInfo> getPaymentById(@PathVariable String id){
+        return paymentService.getPaymentById(id);
+    }
+
+    @GetMapping("/payments/{email}")
+    public ResponseEntity<List<PaymentInfo>> getPaymentsByEmail(@PathVariable String email){
+        List<PaymentInfo> payments = paymentService.getPaymentsByEmail(email);
+        return new ResponseEntity<>(payments,HttpStatus.OK);
     }
 
 

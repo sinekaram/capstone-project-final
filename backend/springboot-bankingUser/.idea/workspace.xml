@@ -1,70 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b1170d-9710-4579-a2df-d4f1e637a9bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Controller/FaqController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Entity/FaqInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Repository/FaqRepo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/Service/FaqService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/classes/com/Natwest/springbootbankingFAQ/SpringbootBankingFaqApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/springboot-bankingFAQ/target/test-classes/com/Natwest/springbootbankingFAQ/SpringbootBankingFaqApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/src/main/java/com/Natwest/springbootbankingUser/Entity/PaymentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-bankingUser/src/main/java/com/Natwest/springbootbankingUser/Entity/PaymentInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springboot-bankingUser/target/classes/com/Natwest/springbootbankingUser/Entity/PaymentInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/springboot-bankingUser/target/classes/com/Natwest/springbootbankingUser/Entity/PaymentInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" afterDir="false" />
-    </list>
+    <list default="true" id="57619cbe-26f9-44ce-b83a-583e015f0a99" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
-  <component name="ProjectId" id="2WQO6iWmKO60J1UjufXd9stel3B" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2WF8B5rvsSwXpZm08ENGWJekRTX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project-final/backend/springboot-bankingUser/springboot-bankingUser",
+    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project/springboot-bankingUser/springboot-bankingUser",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "61214a5ebadf1a8e57d487c8ec26a506",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="SpringbootBankingUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="springboot-bankingUser" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Natwest.springbootbankingUser.SpringbootBankingUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="07b1170d-9710-4579-a2df-d4f1e637a9bb" name="Changes" comment="" />
-      <created>1696661167152</created>
+      <changelist id="57619cbe-26f9-44ce-b83a-583e015f0a99" name="Changes" comment="" />
+      <created>1696316830603</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696661167152</updated>
-      <workItem from="1696661174394" duration="95000" />
+      <updated>1696316830603</updated>
+      <workItem from="1696316831695" duration="7746000" />
+      <workItem from="1696395601417" duration="11020000" />
+      <workItem from="1696481300763" duration="1946000" />
+      <workItem from="1696858906465" duration="4432000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.dao.InvalidDataAccessApiUsageException" package="org.springframework.dao" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

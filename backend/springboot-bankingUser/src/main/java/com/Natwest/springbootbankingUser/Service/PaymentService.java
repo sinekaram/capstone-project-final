@@ -9,19 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PaymentService {
     @Autowired
     private PaymentRepo paymentRepo;
+    @Autowired
+    public PaymentService(PaymentRepo paymentRepo){
+        this.paymentRepo = paymentRepo;
+    }
 
+    public Optional<PaymentInfo> getPaymentById(String id) {
+        return paymentRepo.findById(id);
+    }
 
     public PaymentInfo addPayment(PaymentInfo paymentInfo) {
 
-        String referenceNumber = generateReferenceNumber();
+//        String referenceNumber = generateReferenceNumber();
         Date paymentDate = generatePaymentDate();
-        paymentInfo.setReferenceNumber(referenceNumber);
+//        paymentInfo.setReferenceNumber(referenceNumber);
         paymentInfo.setPaymentDate(paymentDate);
 
         // Save the payment details to the database
@@ -37,16 +45,17 @@ public class PaymentService {
     }
 
     // Add a method to generate a reference number (you can customize this logic)
-    private String generateReferenceNumber() {
-        // Implement your logic to generate a unique reference number here
-        // Example: You can use a combination of timestamp and a random number
-        // For simplicity, let's use a timestamp
-        long timestamp = System.currentTimeMillis();
-        return "REF-" + timestamp;
-    }
+//    private String generateReferenceNumber() {
+//        // Implement your logic to generate a unique reference number here
+//        // Example: You can use a combination of timestamp and a random number
+//        // For simplicity, let's use a timestamp
+//        long timestamp = System.currentTimeMillis();
+//        return "REF-" + timestamp;
+//    }
 
 
-    public Optional<PaymentInfo> getPaymentByEmail(String email) {
-        return null;
+    public List<PaymentInfo> getPaymentsByEmail(String email) {
+        List<PaymentInfo> payments = paymentRepo.findByEmail(email);
+        return payments;
     }
 }
