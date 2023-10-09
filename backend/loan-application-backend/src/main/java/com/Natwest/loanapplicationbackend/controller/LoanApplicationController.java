@@ -23,26 +23,36 @@ public class LoanApplicationController {
         return ResponseEntity.ok(savedApplication);
     }
 
-    @GetMapping("/loan-history")
-    public List<LoanApplication> getAllLoanHistory() {
-        return loanApplicationService.getAllLoans();
-    }
+//    @GetMapping("/loan-history")
+//    public List<LoanApplication> getAllLoanHistory() {
+//        return loanApplicationService.getAllLoans();
+//    }
 
-    @GetMapping("/loan-history/{id}")
-    public ResponseEntity<LoanApplication> getLoanById(@PathVariable String id) {
-        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanById(id);
-        if (loanApplication.isPresent()) {
-            return ResponseEntity.ok(loanApplication.get());
+//    @GetMapping("/loan-history/{id}")
+//    public ResponseEntity<LoanApplication> getLoanById(@PathVariable String id) {
+//        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanById(id);
+//        if (loanApplication.isPresent()) {
+//            return ResponseEntity.ok(loanApplication.get());
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
+//    @DeleteMapping("/loan-history/{id}")
+//    public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
+//        loanApplicationService.deleteLoan(id);
+//        return ResponseEntity.noContent().build();
+//    }
+
+    @GetMapping("/loan/{email}")
+    public ResponseEntity<LoanApplication> getLoanByEmail(@PathVariable String email) {
+        LoanApplication loan = loanApplicationService.getLoanByEmail(email);
+        if (loan != null) {
+            System.out.println("in");
+            return ResponseEntity.ok(loan);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @DeleteMapping("/loan-history/{id}")
-    public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
-        loanApplicationService.deleteLoan(id);
-        return ResponseEntity.noContent().build();
-    }
-
-
 }
+
