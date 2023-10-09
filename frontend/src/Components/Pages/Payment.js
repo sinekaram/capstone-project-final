@@ -26,6 +26,7 @@ const Payment = () => {
   const [upiId, setUpiId] = useState('');
   const [paymentOption, setPaymentOption] = useState('full');
   const [maskedCVV, setMaskedCVV] = useState('');
+  const [loanAmount,setLoanAmount] = useState('');
 
 
   const handlePaymentAmountChange = (e) => {
@@ -46,23 +47,36 @@ const Payment = () => {
   const handleUpiIdChange = (e) => {
     setUpiId(e.target.value);
   };
+  useEffect(() => {
+    const fetchLoanAmount = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/loan/19bcs2464@gmail.com');
+        setLoanAmount(response.data.loanAmount);
+      } catch (error) {
+        console.error('Error fetching loan amount', error);
+      }
+    };
+
+    fetchLoanAmount();
+  }, []);
   const handlePaymentOptionChange = (e) => {
     const selectedOption = e.target.value;
     setPaymentOption(selectedOption);
     // Set payment amount based on the selected option
     if (selectedOption === 'full') {
-      setPaymentAmount('50000'); // Full balance amount
+      setPaymentAmount(loanAmount); // Full balance amount
     } else if (selectedOption === 'partial') {
-      setPaymentAmount('2000'); // Monthly loan amount
+      setPaymentAmount('1000'); // Monthly loan amount
     }
   };
+   
   // useEffect to initialize the payment amount when the component mounts
   useEffect(() => {
     // Set the initial payment amount based on the default payment option ('full' or 'partial')
     if (paymentOption === 'full') {
-      setPaymentAmount('50000'); // Full balance amount
+      setPaymentAmount(loanAmount); // Full balance amount
     } else if (paymentOption === 'partial') {
-      setPaymentAmount('2000'); // Monthly loan amount
+      setPaymentAmount('1000'); // Monthly loan amount
     }
   }, [paymentOption]);
   
@@ -85,9 +99,11 @@ const Payment = () => {
       paymentDate,
       upiId
     };
+    
     try {
     // Send a POST request to your backend endpoint
       const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
+      
       console.log("referenceNumber:",response.data);
       
       console.log('Payment successful', response.data);
@@ -146,11 +162,11 @@ const Payment = () => {
       <Container fluid className="payment-container">
         <h1 className="payment-heading">Loan Payment</h1>
         <div>
-          <p className="payment-info">Total Loan Amount: $50000</p>
-          <p className="payment-info">Monthly Loan Amount: $2000</p>
+          <p className="payment-info">Total Loan Amount: ${loanAmount}</p>
           <p className="payment-info">Due Date: 2023-12-31</p>
         </div>
         <Form onSubmit={handleSubmit}>
+          
         <Form.Group>
             <Form.Label className="payment-label">Payment Option</Form.Label>
             <Form.Control
@@ -224,7 +240,7 @@ const Payment = () => {
                     value={maskedCVV}
                     onChange={handleCVVChange}
                     required
-                    pattern="\d{3}" // Use pattern attribute to enforce 3 digits
+                    pattern="^.{3}$" // Use pattern attribute to enforce 3 digits
                     style={inputStyles}
                     onMouseEnter={handleInputHover}
                     onMouseLeave={handleInputBlur}
