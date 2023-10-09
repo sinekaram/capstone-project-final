@@ -35,11 +35,11 @@ function Login() {
       confirmPassword: password,
     };
 
-    axios.post("http://localhost:8080/users/authenticate", user)
+    axios.post("http://localhost:8081/users/authenticate", user)
       .then((response) => {
         if (response.data === "admin" || response.data === "customer") {
           alert("Login Successful");
-          axios.post("http://localhost:8080/users/getId", user).then((resp) => {
+          axios.post("http://localhost:8081/users/getId", user).then((resp) => {
             sessionStorage.setItem("id", resp.data);
             // const user_id = sessionStorage.getItem("id");
           })
@@ -48,7 +48,7 @@ function Login() {
             navigate("/admin");
           }
           else {
-            navigate("/customer")
+            navigate("/userdashboard")
           }
 
         }
