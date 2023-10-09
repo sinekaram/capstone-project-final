@@ -1,11 +1,10 @@
 import React from 'react'
 import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
-const PaymentSuccessPopup = ({ referenceNumber, onClose}) => {
+const PaymentSuccessPopup = ({onClose}) => {
   return (
     <div className="payment-success-popup">
       <h2>Payment Successful!</h2>
       <p>Your payment has been successfully processed.</p>
-      <p>Reference Number: {referenceNumber}</p>
       <button onClick={onClose}>Close</button>
     </div>
   )

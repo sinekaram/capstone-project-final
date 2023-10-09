@@ -8,6 +8,8 @@ import PaymentSuccessPopup from './PaymentSuccessPopup';
 import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
 import '../css/payment.css';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Payment = () => {
   const [paymentAmount, setPaymentAmount] = useState('');
@@ -27,15 +29,20 @@ const Payment = () => {
   const [paymentOption, setPaymentOption] = useState('full');
   const [maskedCVV, setMaskedCVV] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
-  const [loanType, setLoanType] = useState('personal');
+  const [loanType, setLoanType] = useState('');
   const[balanceAmount,setBalanceAmount] = useState('');
   const[paidAmount,setPaidAmount] = useState('');
+  const [paymentError, setPaymentError] = useState('');
+
 
   const email = sessionStorage.getItem("email"); // Retrieve email from session storage
   console.log(email);
 
 
-
+  const generateReferenceNumber = () => {
+    return uuidv4(); // Generate a unique UUID as the reference number
+  };
+  
   const handlePaymentAmountChange = (e) => {
     setPaymentAmount(e.target.value);
   };
@@ -61,6 +68,7 @@ const Payment = () => {
     const fetchLoanAmount = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/loan/${email}`);
+        setLoanType(response.data.typeOfLoan);
         setLoanAmount(response.data.loanAmount);
         setBalanceAmount(response.data.balanceAmount);
         setPaidAmount(response.data.paidAmount);
@@ -76,9 +84,9 @@ const Payment = () => {
     setPaymentOption(selectedOption);
     // Set payment amount based on the selected option
     if (selectedOption === 'full') {
-      setPaymentAmount(loanAmount); // Full balance amount
+      setPaymentAmount(balanceAmount); // Full balance amount
     } else if (selectedOption === 'partial') {
-      setPaymentAmount('1000'); // Monthly loan amount
+      setPaymentAmount(''); // Monthly loan amount
     }
   };
 
@@ -86,14 +94,21 @@ const Payment = () => {
   useEffect(() => {
     // Set the initial payment amount based on the default payment option ('full' or 'partial')
     if (paymentOption === 'full') {
-      setPaymentAmount(loanAmount); // Full balance amount
+      setPaymentAmount(balanceAmount); // Full balance amount
     } else if (paymentOption === 'partial') {
-      setPaymentAmount('1000'); // Monthly loan amount
+      setPaymentAmount(''); // Monthly loan amount
     }
   }, [paymentOption]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const floatPaymentAmount = parseFloat(paymentAmount);
+    if (floatPaymentAmount > parseFloat(balanceAmount)) {
+      // Display an error message to the user or handle it as needed
+      setPaymentError('Payment amount exceeds the balance amount.');
+      return;
+    }
+    const referenceNumber = generateReferenceNumber();
     // Perform payment processing here (e.g., validation, API call)
     // Create a paymentInfo object with the payment details
     const email = sessionStorage.getItem("email");
@@ -122,10 +137,11 @@ const Payment = () => {
     try {
       // Send a POST request to your backend endpoint
       const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
+      
+      
 
-      console.log("referenceNumber:", response.data);
-
-      console.log('Payment successful', response.data);
+      console.log('Payment successful');
+      console.log(referenceNumber);
       
       const newBalanceAmount= balanceAmount-paymentAmount;
       console.log(newBalanceAmount);
@@ -133,7 +149,7 @@ const Payment = () => {
       console.log(newPaidAmount);
       setBalanceAmount(newBalanceAmount);
       setPaidAmount(newPaidAmount);
-      setPaymentAmount('1000');
+      setPaymentAmount('');
       setPaymentMethod('creditCard');
       setCardNumber('');
       setNameOnCard('');
@@ -188,7 +204,6 @@ const Payment = () => {
   // Generate an array of years starting from the current year up to 10 years in the future
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 11 }, (_, i) => currentYear + i);
-
   return (
     <Fragment>
       <TopNavbar />
@@ -198,7 +213,6 @@ const Payment = () => {
           <p className="payment-info">Total Loan Amount: ${loanAmount}</p>
           <p className="payment-info">Outstanding Loan Amount: ${balanceAmount}</p>
           <p className="payment-info">Paid Loan Amount: ${paidAmount}</p>
-          <p className="payment-info">Due Date: 2023-12-31</p>
         </div>
         <Form onSubmit={handleSubmit}>
           <Form.Group>
@@ -226,7 +240,7 @@ const Payment = () => {
               disabled={showSuccessPopup}
             >
               <option value="full">Full Amount</option>
-              <option value="partial">Monthly Amount</option>
+              <option value="partial">Partial Amount</option>
             </Form.Control>
           </Form.Group>
           <Form.Group>
@@ -239,6 +253,7 @@ const Payment = () => {
               className="payment-input"
               disabled={paymentOption === 'full' || showSuccessPopup}
             />
+            {paymentError && <div className="payment-error">{paymentError}</div>}
           </Form.Group>
           <Form.Group>
             <Form.Label className="payment-label">Payment Method</Form.Label>
@@ -396,7 +411,6 @@ const Payment = () => {
       <Footer />
       {showSuccessPopup && (
         <PaymentSuccessPopup
-          referenceNumber={referenceNumber}
           onClose={() => setShowSuccessPopup(false)}
         />
       )}
