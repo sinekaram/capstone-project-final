@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
 import TopNavbar from '../Header/TopNavbar';
 import Container from 'react-bootstrap/Container';
@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PaymentSuccessPopup from './PaymentSuccessPopup';
 import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
-import '../css/payment.css'; 
+import '../css/payment.css';
 import axios from 'axios';
 
 const Payment = () => {
@@ -26,10 +26,15 @@ const Payment = () => {
   const [upiId, setUpiId] = useState('');
   const [paymentOption, setPaymentOption] = useState('full');
   const [maskedCVV, setMaskedCVV] = useState('');
+  const [loanAmount, setLoanAmount] = useState('');
+  const [loanType, setLoanType] = useState('personal');
 
 
   const handlePaymentAmountChange = (e) => {
     setPaymentAmount(e.target.value);
+  };
+  const handleLoanTypeChange = (e) => {
+    setLoanType(e.target.value);
   };
   const handleCVVChange = (e) => {
     const cvvValue = e.target.value;
@@ -46,27 +51,40 @@ const Payment = () => {
   const handleUpiIdChange = (e) => {
     setUpiId(e.target.value);
   };
+  useEffect(() => {
+    const fetchLoanAmount = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/loan/19bcs2464@gmail.com');
+        setLoanAmount(response.data.loanAmount);
+      } catch (error) {
+        console.error('Error fetching loan amount', error);
+      }
+    };
+
+    fetchLoanAmount();
+  }, []);
   const handlePaymentOptionChange = (e) => {
     const selectedOption = e.target.value;
     setPaymentOption(selectedOption);
     // Set payment amount based on the selected option
     if (selectedOption === 'full') {
-      setPaymentAmount('50000'); // Full balance amount
+      setPaymentAmount(loanAmount); // Full balance amount
     } else if (selectedOption === 'partial') {
-      setPaymentAmount('2000'); // Monthly loan amount
+      setPaymentAmount('1000'); // Monthly loan amount
     }
   };
+
   // useEffect to initialize the payment amount when the component mounts
   useEffect(() => {
     // Set the initial payment amount based on the default payment option ('full' or 'partial')
     if (paymentOption === 'full') {
-      setPaymentAmount('50000'); // Full balance amount
+      setPaymentAmount(loanAmount); // Full balance amount
     } else if (paymentOption === 'partial') {
-      setPaymentAmount('2000'); // Monthly loan amount
+      setPaymentAmount('1000'); // Monthly loan amount
     }
   }, [paymentOption]);
-  
-  const handleSubmit = async(e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform payment processing here (e.g., validation, API call)
     // Create a paymentInfo object with the payment details
@@ -83,13 +101,16 @@ const Payment = () => {
       ifscCode,
       referenceNumber,
       paymentDate,
-      upiId
+      upiId,
+      loanType
     };
+
     try {
-    // Send a POST request to your backend endpoint
+      // Send a POST request to your backend endpoint
       const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
-      console.log("referenceNumber:",response.data);
-      
+
+      console.log("referenceNumber:", response.data);
+
       console.log('Payment successful', response.data);
       setShowSuccessPopup(true);
 
@@ -146,12 +167,26 @@ const Payment = () => {
       <Container fluid className="payment-container">
         <h1 className="payment-heading">Loan Payment</h1>
         <div>
-          <p className="payment-info">Total Loan Amount: $50000</p>
-          <p className="payment-info">Monthly Loan Amount: $2000</p>
+          <p className="payment-info">Total Loan Amount: ${loanAmount}</p>
           <p className="payment-info">Due Date: 2023-12-31</p>
         </div>
         <Form onSubmit={handleSubmit}>
-        <Form.Group>
+          <Form.Group>
+            <Form.Label className="payment-label">Loan Type</Form.Label>
+            <Form.Control
+              as="select"
+              value={loanType}
+              onChange={handleLoanTypeChange}
+              className="payment-select"
+            >
+              <option value="personal">Personal Loan</option>
+              <option value="home">Home Loan</option>
+              <option value="student">Student Loan</option>
+              <option value="auto">Auto Loan</option>
+              <option value="business">Business Loan</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group>
             <Form.Label className="payment-label">Payment Option</Form.Label>
             <Form.Control
               as="select"
@@ -220,19 +255,19 @@ const Payment = () => {
               <Form.Group>
                 <Form.Label className="payment-label">CVV</Form.Label>
                 <Form.Control
-                    type="text"
-                    value={maskedCVV}
-                    onChange={handleCVVChange}
-                    required
-                    pattern="\d{3}" // Use pattern attribute to enforce 3 digits
-                    style={inputStyles}
-                    onMouseEnter={handleInputHover}
-                    onMouseLeave={handleInputBlur}
-                    onBlur={handleInputBlur}
-                    className="payment-input"
+                  type="text"
+                  value={maskedCVV}
+                  onChange={handleCVVChange}
+                  required
+                  pattern="^.{3}$" // Use pattern attribute to enforce 3 digits
+                  style={inputStyles}
+                  onMouseEnter={handleInputHover}
+                  onMouseLeave={handleInputBlur}
+                  onBlur={handleInputBlur}
+                  className="payment-input"
                 />
                 <small className="text-muted">Enter a 3-digit CVV number.</small>
-                </Form.Group>
+              </Form.Group>
               <Form.Group>
                 <Form.Label className="payment-label">Expiration Date</Form.Label>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -290,7 +325,7 @@ const Payment = () => {
                   required
                   className="payment-input"
                 />
-                </Form.Group>
+              </Form.Group>
               <Form.Group>
                 <Form.Label className="payment-label">IFSC Code</Form.Label>
                 <Form.Control
@@ -301,30 +336,30 @@ const Payment = () => {
                   className="payment-input"
                 />
               </Form.Group>
-              </Fragment>
+            </Fragment>
           )}
           {paymentMethod === 'upi' && (
             <Fragment>
-          <Form.Group>
-            <Form.Label className="payment-label">UPI ID</Form.Label>
-            <Form.Control
-              type="text"
-              value={upiId}
-              onChange={handleUpiIdChange}
-              required
-              style={inputStyles}
-              onMouseEnter={handleInputHover}
-              onMouseLeave={handleInputBlur}
-              onBlur={handleInputBlur}
-              className="payment-input"
-            />
-          </Form.Group>
-          </Fragment>
-        )}
+              <Form.Group>
+                <Form.Label className="payment-label">UPI ID</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={upiId}
+                  onChange={handleUpiIdChange}
+                  required
+                  style={inputStyles}
+                  onMouseEnter={handleInputHover}
+                  onMouseLeave={handleInputBlur}
+                  onBlur={handleInputBlur}
+                  className="payment-input"
+                />
+              </Form.Group>
+            </Fragment>
+          )}
           <div>
-          <Button type="submit" className="payment-button">
-            Submit Payment
-          </Button>
+            <Button type="submit" className="payment-button">
+              Submit Payment
+            </Button>
           </div>
         </Form>
       </Container>
@@ -334,7 +369,7 @@ const Payment = () => {
           referenceNumber={referenceNumber}
           onClose={() => setShowSuccessPopup(false)}
         />
-        )}
+      )}
     </Fragment>
   );
 };

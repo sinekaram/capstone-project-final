@@ -169,7 +169,8 @@ p {
 .image-container {
   width: 200px; /* Set the desired width */
   margin: 10px; /* Add margin around each image */
-  position: relative; /* Create a positioning context for absolute elements */
+  position: relative; 
+  /* Create a positioning context for absolute elements */
 }
 
 /* Styling for images within image containers */
@@ -195,12 +196,14 @@ p {
 
 /* Styling for links within image descriptions */
 .image-description a {
+  margin-top: 10px;
   color: #5a287d; /* Link color within the description */
   text-decoration: underline; /* Underline the links */
 }
 
 /* Styling for the image descriptions */
 .image-description {
+  font-style: italic;
   color: #5a287d; /* Text color in violet */
   padding: 10px; /* Padding around the content */
   position: absolute; /* Position the description over the image */

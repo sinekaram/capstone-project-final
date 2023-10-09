@@ -16,10 +16,6 @@ public class PaymentService {
     @Autowired
     private PaymentRepo paymentRepo;
 
-    public Optional<PaymentInfo> getPaymentByEmailId(String emailid) {
-
-        return paymentRepo.findById(emailid);
-    }
 
     public PaymentInfo addPayment(PaymentInfo paymentInfo) {
 
@@ -50,4 +46,7 @@ public class PaymentService {
     }
 
 
+    public Optional<PaymentInfo> getPaymentByEmail(String email) {
+        return null;
+    }
 }
