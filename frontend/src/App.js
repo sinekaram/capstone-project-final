@@ -31,7 +31,7 @@ function App() {
       <Routes>
         
         <Route path="natwestlogo" element={<Home/>}/>
-        <Route path="home" element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route path="faq" element={<FAQ/>}/>
         <Route path="/apply-for-loan" element={<LoanApplicationForm />} />
         <Route path="/loan-history" element={<LoanHistory />} />
