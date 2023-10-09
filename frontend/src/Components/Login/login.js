@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import {
   Container,
   Typography,
@@ -13,6 +13,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import CloseIcon from '@mui/icons-material/Close';
 import { useReducer } from 'react';
+import TopNavbar from '../Header/TopNavbar';
+import Footer from '../Footer/Footer';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -68,18 +70,20 @@ function Login() {
   };
 
   return (
+    <Fragment>
+      <TopNavbar></TopNavbar>
     <Container maxWidth="sm">
       <div className="styled-box">
-        <Box bgcolor="#572780" p={2} mb={2}>
-          <Typography variant="body" align="center" gutterBottom style={{ color: 'white' }}>
+        <Box bgcolor="#572780" p={2} mb={2} mt={-1}>
+          <Typography variant="body" align="center" gutterBottom style={{ color: 'white',fontWeight: 'bold' }}>
             Login
           </Typography>
         </Box>
-        <Typography variant="body2" align="left" gutterBottom style={{ color: '#572780' }}>
+        <Typography variant="body2" align="left" gutterBottom style={{ color: '#572780',fontWeight: 'bold' }}>
           Welcome to NatWest Group!!
         </Typography>
         <Typography variant="body2" align="left" gutterBottom>
-          Please enter your email and password.
+          Please enter your Email Id and password.
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -108,7 +112,7 @@ function Login() {
             variant="contained"
             color="primary"
             onClick={handleContinue}
-            style={{ backgroundColor: '#572780', color: 'white' }}
+            style={{ backgroundColor: '#572780', color: 'white', }}
           >
             Continue
           </Button>
@@ -134,14 +138,14 @@ function Login() {
         </Snackbar>
       </div>
       {/* Add the "New user? Sign up" button below the container */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px',marginBottom:'50px' }}>
         <Button
           variant="text"
           color="primary"
-          style={{ textDecoration: 'underline', color: '#572780' }}
+          style={{ textDecoration: 'underline', color: '#572780', backgroundColor: 'transparent ' }}
           onClick={() => {
             // Handle the sign-up button click, e.g., navigate to the sign-up page
-            navigate("/signup");
+            navigate("/register");
           }}
         >
           New user? Sign up
@@ -172,6 +176,8 @@ function Login() {
         `}
       </style>
     </Container>
+    <Footer></Footer>
+    </Fragment>
   );
 }
 

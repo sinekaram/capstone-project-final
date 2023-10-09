@@ -21,8 +21,11 @@
 
 .footer-link {
   color: white;
-  font-weight: bold;
+  font-size: 15px;
   margin-right: 30px;
+  margin-left:120px ;
+  margin-top: 0px;
+  margin-bottom: 150px;
 }
 
 .footer-link:hover {
