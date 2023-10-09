@@ -30,13 +30,13 @@ public class LoanApplicationService {
         loanApplicationRepository.deleteById(id);
     }
 
-<<<<<<< HEAD
     public LoanApplication getLoanByEmail(String email) {
         return loanApplicationRepository.findByemail(email);
     }
-=======
->>>>>>> 1ebf46c2859a3f61b093d1eaa057c42ab202b346
 
+    public LoanApplication updateLoan(LoanApplication loan) {
+        return loanApplicationRepository.save(loan);
+    }
 }
 
 

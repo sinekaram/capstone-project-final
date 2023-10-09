@@ -1,6 +1,7 @@
 package com.Natwest.loanapplicationbackend.controller;
 
 import com.Natwest.loanapplicationbackend.entity.LoanApplication;
+import com.Natwest.loanapplicationbackend.entity.PaymentUpdateRequest;
 import com.Natwest.loanapplicationbackend.services.LoanApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,9 +56,22 @@ public class LoanApplicationController {
         loanApplicationService.deleteLoan(id);
         return ResponseEntity.noContent().build();
     }
-<<<<<<< HEAD
-=======
 
+    @PutMapping("/loan/{email}/update-payment")
+    public ResponseEntity<LoanApplication> updatePaymentDetails(@PathVariable String email,
+                                                                @RequestBody PaymentUpdateRequest paymentUpdateRequest) {
+        LoanApplication loan = loanApplicationService.getLoanByEmail(email);
+        if (loan != null) {
+            loan.setBalanceAmount(paymentUpdateRequest.getNewBalanceAmount());
+            loan.setPaidAmount(paymentUpdateRequest.getNewPaidAmount());
 
->>>>>>> 1ebf46c2859a3f61b093d1eaa057c42ab202b346
+            // Save the updated loan application to the database
+            LoanApplication updatedLoan = loanApplicationService.updateLoan(loan);
+
+            return ResponseEntity.ok(updatedLoan);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

@@ -1,10 +1,15 @@
 package com.Natwest.loanapplicationbackend.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Document("loan_applications")
+@AllArgsConstructor
+@ToString
 public class LoanApplication {
 
     @Id
@@ -18,15 +23,16 @@ public class LoanApplication {
     private String email;
     private Double monthlyIncome;
     private Double loanAmount;
-
-    private Double balanceAmount;
     private Integer loanTerm;
     private String typeOfLoan;
     private String interestRateType;
+    private Double balanceAmount;
+    private Double paidAmount;
 
-    public LoanApplication() {
-        this.balanceAmount = loanAmount; // Set balanceAmount to loanAmount initially
-    }
+
+
+    private boolean approvalStatus = false;
+
     public String getId() {
         return id;
     }
@@ -45,6 +51,13 @@ public class LoanApplication {
 
     public String getLastName() {
         return lastName;
+    }
+    public Double getPaidAmount() {
+        return paidAmount;
+    }
+
+    public void setPaidAmount(Double paidAmount) {
+        this.paidAmount = paidAmount;
     }
 
     public void setLastName(String lastName) {
@@ -122,6 +135,7 @@ public class LoanApplication {
     public void setInterestRateType(String interestRateType) {
         this.interestRateType = interestRateType;
     }
+
     public Double getBalanceAmount() {
         return balanceAmount;
     }
@@ -130,22 +144,31 @@ public class LoanApplication {
         this.balanceAmount = balanceAmount;
     }
 
+    public boolean isApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(boolean approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
     @Override
     public String toString() {
         return "LoanApplication{" +
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dob=" + dob +
+                ", dob='" + dob + '\'' +
                 ", aadhaarCard='" + aadhaarCard + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", monthlyIncome=" + monthlyIncome +
                 ", loanAmount=" + loanAmount +
-                ", balanceAmount=" + balanceAmount +
                 ", loanTerm=" + loanTerm +
                 ", typeOfLoan='" + typeOfLoan + '\'' +
                 ", interestRateType='" + interestRateType + '\'' +
+                ", balanceAmount=" + balanceAmount +
+                ", approvalStatus=" + approvalStatus +
                 '}';
     }
 }
