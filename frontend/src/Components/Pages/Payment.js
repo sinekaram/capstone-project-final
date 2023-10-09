@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const Payment = () => {
-  const [paymentAmount, setPaymentAmount] = useState('');
+  
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
   const [cardNumber, setCardNumber] = useState('');
   const [nameOnCard, setNameOnCard] = useState('');
@@ -33,6 +33,7 @@ const Payment = () => {
   const[balanceAmount,setBalanceAmount] = useState('');
   const[paidAmount,setPaidAmount] = useState('');
   const [paymentError, setPaymentError] = useState('');
+  const [paymentAmount, setPaymentAmount] = useState(balanceAmount);
 
 
   const email = sessionStorage.getItem("email"); // Retrieve email from session storage
@@ -67,11 +68,13 @@ const Payment = () => {
   useEffect(() => {
     const fetchLoanAmount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/loan/${email}`);
+        // const response = await axios.get(`http://localhost:8080/api/loan/${email}`);
+        const response = await axios.get(`http://localhost:8080/api/loan/19bcs2464@gmail.com`);
         setLoanType(response.data.typeOfLoan);
         setLoanAmount(response.data.loanAmount);
         setBalanceAmount(response.data.balanceAmount);
         setPaidAmount(response.data.paidAmount);
+        setPaymentAmount(response.data.balanceAmount);
       } catch (error) {
         console.error('Error fetching loan amount', error);
       }
@@ -392,6 +395,7 @@ const Payment = () => {
                   value={upiId}
                   onChange={handleUpiIdChange}
                   required
+                  pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+[a-zA-Z]{2,}"
                   style={inputStyles}
                   onMouseEnter={handleInputHover}
                   onMouseLeave={handleInputBlur}

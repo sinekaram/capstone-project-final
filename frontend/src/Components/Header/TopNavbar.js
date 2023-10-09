@@ -39,14 +39,10 @@ const TopNavbar = () => {
             <NavLink to="/faq" className="nav-link">FAQs</NavLink>
             <NavLink to="/emiCalculator" className="nav-link">EMI Calculator</NavLink>
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
-            <NavLink to="/contact" className="nav-link">Contact</NavLink>
           </Nav>
           <Nav>
           <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
               <FaSignInAlt style={iconStyle} /> Login
-            </Link>
-            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              Register <FaSignInAlt style={iconStyle} />
             </Link>
 
             {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
