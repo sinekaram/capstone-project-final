@@ -3,6 +3,7 @@ import TopNavbar from '../Header/TopNavbar'
 import Footer from '../Footer/Footer';
 import '../css/Home.css'; // Import your CSS file for styling
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Link } from 'react-router-dom';
 
 
 
@@ -100,19 +101,19 @@ const Home = () => {
       </div>
       <section className="banking-section">
         <div className="banking-content">
-          <h2>Something can’t wait? Buy Now Pay Later</h2>
+          <h2>Apply for a new Loan Now!</h2>
           <p>
+            Are you eyeing that dream purchase but want to spread the cost over time? Our "Buy Now, Pay Later"
+            loans offer you the flexibility you need. Whether it's a new car,
+            a home renovation, or a dream vacation, you can make your purchase today and
+            repay it in manageable installments.
             We offer a wide range of banking services to meet your financial needs.
             Whether you're saving for the future, managing your daily expenses, or
             planning for retirement, we have you covered.
-            A loan EMI calculator helps you save your valuable time.
-            You don’t have to do the complex calculations manually,
-            which can be quite time-consuming. It eliminates any chance of
-            a miscalculation, providing you with an accurate estimate every time.
-            It is highly specific for each type of loan.
           </p>
-
-          <button className="btn-primary">Learn More</button>
+          <Link to='/register'>
+          <button className="btn-primary">Apply Now</button>
+          </Link>
         </div>
 
       </section>

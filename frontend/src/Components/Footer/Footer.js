@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
         </ul>
       </nav>
-      <span style={{fontSize:'10px' }}>
+      <span>
         Copyright © National Westminster Bank plc 2023. Registered office: 250 Bishopsgate, London, EC2M 4AA.
       </span>
     </div>

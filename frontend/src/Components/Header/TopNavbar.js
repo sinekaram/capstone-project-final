@@ -44,9 +44,10 @@ const TopNavbar = () => {
           <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
               <FaSignInAlt style={iconStyle} /> Login
             </Link>
-
-            {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-            <FaSignInAlt style={iconStyle}/>Login</button> */}
+            
+            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
+              <FaSignInAlt style={iconStyle} /> Register
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

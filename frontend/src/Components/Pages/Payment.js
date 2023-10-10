@@ -9,10 +9,11 @@ import paymentsuccesspopup from '../css/paymentsuccesspopup.css';
 import '../css/payment.css';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 
 const Payment = () => {
-  
+
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
   const [cardNumber, setCardNumber] = useState('');
   const [nameOnCard, setNameOnCard] = useState('');
@@ -30,10 +31,11 @@ const Payment = () => {
   const [maskedCVV, setMaskedCVV] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
   const [loanType, setLoanType] = useState('');
-  const[balanceAmount,setBalanceAmount] = useState('');
-  const[paidAmount,setPaidAmount] = useState('');
+  const [balanceAmount, setBalanceAmount] = useState('');
+  const [paidAmount, setPaidAmount] = useState('');
   const [paymentError, setPaymentError] = useState('');
   const [paymentAmount, setPaymentAmount] = useState(balanceAmount);
+
 
 
   const email = sessionStorage.getItem("email"); // Retrieve email from session storage
@@ -43,9 +45,10 @@ const Payment = () => {
   const generateReferenceNumber = () => {
     return uuidv4(); // Generate a unique UUID as the reference number
   };
-  
+
   const handlePaymentAmountChange = (e) => {
     setPaymentAmount(e.target.value);
+    setPaymentError('');
   };
   const handleLoanTypeChange = (e) => {
     setLoanType(e.target.value);
@@ -132,7 +135,7 @@ const Payment = () => {
       loanType,
       email,
     };
-    const payment={
+    const payment = {
       balanceAmount,
       paidAmount,
     };
@@ -140,15 +143,15 @@ const Payment = () => {
     try {
       // Send a POST request to your backend endpoint
       const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
-      
-      
+
+
 
       console.log('Payment successful');
       console.log(referenceNumber);
-      
-      const newBalanceAmount= balanceAmount-paymentAmount;
+
+      const newBalanceAmount = balanceAmount - paymentAmount;
       console.log(newBalanceAmount);
-      const newPaidAmount= parseFloat(paidAmount)+parseFloat(paymentAmount);
+      const newPaidAmount = parseFloat(paidAmount) + parseFloat(paymentAmount);
       console.log(newPaidAmount);
       setBalanceAmount(newBalanceAmount);
       setPaidAmount(newPaidAmount);
@@ -171,7 +174,7 @@ const Payment = () => {
       };
       await axios.put(`http://localhost:8080/api/loan/${email}/update-payment`, updatedUserData);
       setShowSuccessPopup(true);
-      
+
     } catch (error) {
       console.error('Error making payment', error);
     }
@@ -256,7 +259,10 @@ const Payment = () => {
               className="payment-input"
               disabled={paymentOption === 'full' || showSuccessPopup}
             />
-            {paymentError && <div className="payment-error">{paymentError}</div>}
+            {paymentError && (
+              <div className="full-payment-error">{paymentError}</div>
+            )}
+
           </Form.Group>
           <Form.Group>
             <Form.Label className="payment-label">Payment Method</Form.Label>
@@ -406,7 +412,9 @@ const Payment = () => {
             </Fragment>
           )}
           <div>
-            <Button type="submit" className="payment-button">
+            <Button type="submit" className="payment-button" 
+            onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+            onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
               Submit Payment
             </Button>
           </div>
