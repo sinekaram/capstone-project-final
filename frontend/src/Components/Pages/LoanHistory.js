@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/LoanHistory.css';
-import Header from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
+import Header from '../Header/Header'
 
-const API_URL = 'http://localhost:8080/api';
+
+const API_URL = 'http://localhost:8090/api';
 
 const LoanHistoryDetails = () => {
   const [loanHistory, setLoanHistory] = useState([]);
@@ -16,7 +17,7 @@ const LoanHistoryDetails = () => {
       // Handle the case when email is not available in session storage
       console.error('Email not found in session storage');
       return;
-    }
+    } 
 
     axios
       .get(`${API_URL}/loan-history?email=${email}`) // Pass email as a query parameter

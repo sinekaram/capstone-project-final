@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, Container, Button, ButtonGroup } from '@mu
 import LoanApplications from './LoanApplications';
 import ApprovedApplications from './ApprovedApplications';
 import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function AdminDashboard() {
   const [showApprovedApplications, setShowApprovedApplications] = useState(false);
@@ -11,8 +12,16 @@ function AdminDashboard() {
     setShowApprovedApplications(false);
   };
 
+  const navigate = useNavigate();
+
   const handleShowApprovedApplications = () => {
     setShowApprovedApplications(true);
+  };
+
+  const handleLogout = () => {
+    // Clear session storage when the "Logout" button is clicked
+    sessionStorage.clear();
+    navigate('/');
   };
 
   return (
@@ -45,6 +54,16 @@ function AdminDashboard() {
             >
               Approved Loans
             </Button>
+
+            <Button
+              variant="text"
+              color="inherit"
+              onClick={handleLogout}
+              style={{ textTransform: 'capitalize', marginLeft: '50px', marginTop: '10px', fontSize: '18px' }}
+            >
+              Logout
+            </Button>
+
           </ButtonGroup>
         </Toolbar>
       </AppBar>

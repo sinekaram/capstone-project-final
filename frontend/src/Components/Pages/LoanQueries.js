@@ -3,6 +3,8 @@ import { Card, CardContent, Typography, Grid, Container, Button } from '@mui/mat
 import { Link } from 'react-router-dom';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header'
+
 
 const LoanQueriesFAQ = () => {
   const faqItems = [
@@ -83,10 +85,13 @@ const LoanQueriesFAQ = () => {
     }
   ];
 
+  const email = sessionStorage.getItem('email');
+
+
  
   return (
     <Fragment>
-        <TopNavbar/>
+        {email?<Header/>:<TopNavbar/>}
     <Container style={{ paddingTop: '70px', paddingLeft: '130px' }}>
       <h1>Frequently Asked Questions</h1>
       <Grid container spacing={2}>

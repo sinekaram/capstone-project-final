@@ -31,7 +31,7 @@ function ApprovedApplications() {
       <Grid container spacing={2}> {/* Use Grid to create a grid layout */}
         {acceptedLoanApplications.map(application => (
           <Grid item xs={12} sm={6} key={application.id}> {/* Each card takes half the width on small screens */}
-            <Card style={{ marginBottom: '10px',backgroundColor:'#FEDFE2' }}>
+            <Card style={{ marginBottom: '10px',backgroundColor:'#f0f0f0' }}>
               <CardContent>
                 <p><strong>Name:</strong> {application.firstName} {application.lastName}</p>
                 <p><strong>Email:</strong> {application.email}</p>

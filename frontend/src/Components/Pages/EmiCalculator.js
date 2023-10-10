@@ -2,7 +2,9 @@ import React, { useState} from 'react';
 import '../css/EmiCalculator.css';
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts';
 import Footer from "../Footer/Footer";
-import Header from "../Header/TopNavbar";
+import TopNavbar from "../Header/TopNavbar";
+import Header from '../Header/Header';
+
 
 const EmiCalculator = () => {
   // State to store user input and calculated values
@@ -59,10 +61,12 @@ const EmiCalculator = () => {
 
   // Colors for the pie chart segments
   const colors = ['#36A2EB', '#FFCE56'];
+  const email = sessionStorage.getItem('email');
+
 
   return (
     <div>
-        <Header/>
+       {email?<Header/>:<TopNavbar/>}
         <div className="emi-calculator">
       <h2>EMI Calculator</h2>
       <form>

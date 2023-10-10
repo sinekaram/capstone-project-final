@@ -22,7 +22,6 @@ import LoanApplications from './Components/Admin/LoanApplications';
 import ApprovedApplications from './Components/Admin/ApprovedApplications';
 
 
-
 function App() {
   return (
     <Fragment>
@@ -40,6 +39,7 @@ function App() {
         <Route path="/payment" element={<Payment/>}/>
         <Route path="/userdashboard" element={<DashboardLayout />} />
         <Route path="/userdashboard/loantypes" element={<LoanTypes />} />
+        
         <Route path="/loanqueriesfaq" element={<LoanQueries />} />
 	<Route path="/login" element={<Login />} />
           <Route path="/password" element={<Password />} /> {/* Add this route */}

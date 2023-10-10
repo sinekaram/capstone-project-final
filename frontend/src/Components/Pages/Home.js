@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import '../css/Home.css'; // Import your CSS file for styling
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { Link } from 'react-router-dom';
+import Header from '../Header/Header'
 
 
 
@@ -17,9 +18,11 @@ const Home = () => {
     { name: 'Economy', ratings: 56 },
   ];
 
+  const email = sessionStorage.getItem('email');
+
   return (
     <Fragment>
-      <TopNavbar />
+      {email?<Header/>:<TopNavbar/>}
       <div className="content-container">
         <div className="content">
           <span className="span">

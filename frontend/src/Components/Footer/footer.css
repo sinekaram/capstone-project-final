@@ -4,7 +4,10 @@
 .footer {
   background-color: #5a287d;
   padding: 20px 0;
-  text-align: left;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 /* Footer link styles */

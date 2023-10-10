@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
-import TopNavbar from '../Header/TopNavbar';
+import Header from '../Header/Header';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -212,7 +212,7 @@ const Payment = () => {
   const years = Array.from({ length: 11 }, (_, i) => currentYear + i);
   return (
     <Fragment>
-      <TopNavbar />
+      <Header />
       <Container fluid className="payment-container">
         <h1 className="payment-heading">Loan Payment</h1>
         <div>

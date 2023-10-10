@@ -6,7 +6,7 @@ import { Link,NavLink } from 'react-router-dom';
 import { FaSignInAlt } from 'react-icons/fa';
 
 
-const TopNavbar = () => {
+const Header = () => {
   const navbarStyle = {
     backgroundColor: '#5a287d', // Set the background color to #5a287d
   };
@@ -16,6 +16,10 @@ const TopNavbar = () => {
   };
   const iconStyle = {
     marginRight: '8px', // Adjust the margin as needed
+  };
+  const handleLogout = () => {
+    // Clear session storage when the "Logout" button is clicked
+    sessionStorage.clear();
   };
   return (
     
@@ -33,24 +37,20 @@ const TopNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/" className="nav-link">Home</NavLink>
+            <NavLink to="/userdashboard" className="nav-link">Home</NavLink>
             <NavLink to="/about" className="nav-link">About</NavLink>
             <NavLink to="/faq" className="nav-link">FAQs</NavLink>
             <NavLink to="/emiCalculator" className="nav-link">EMI Calculator</NavLink>
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
           </Nav>
           <Nav>
-          <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              <FaSignInAlt style={iconStyle} /> Login
-            </Link>
-            
-            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              <FaSignInAlt style={iconStyle} /> Register
+          <Link to="/" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }} onClick={handleLogout}>
+           <FaSignInAlt style={iconStyle} /> Logout
             </Link>
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse> 
       </Container>
     </Navbar>
   );
 }
-export default TopNavbar
+export default Header;

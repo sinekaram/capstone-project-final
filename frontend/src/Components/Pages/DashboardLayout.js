@@ -16,7 +16,7 @@ import Axios from 'axios';
 
 import LoanTypes from './LoanTypes';
 import Footer from '../Footer/Footer';
-import TopNavbar from '../Header/TopNavbar';
+import Header from '../Header/Header';
 import '../css/dashboardlayout.css';
 
 function PaymentCard({ paymentData }) {
@@ -60,6 +60,7 @@ function DashboardLayout({ id }) {
   const [openTransactionHistoryDialog, setOpenTransactionHistoryDialog] = useState(false);
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
+
 
   useEffect(() => {
     Axios.get(`http://localhost:8082/users/${id}`)
@@ -112,29 +113,13 @@ function DashboardLayout({ id }) {
 
   return (
     <Fragment>
-      <TopNavbar />
+      <Header />
       <div className="dashboard-container">
         <AppBar position="static" className="app-bar">
           <Toolbar className="centered-text">
             <Typography variant="h4" className="app-title">
               Welcome Back {user.firstName} {user.lastName}
             </Typography>
-            <div style={{ marginLeft: 'auto' }}>
-              <Button
-                component={Link}
-                to="/home"
-                variant="contained"
-                style={{
-                  backgroundColor: '#401664',
-                  color: '#fff',
-                  padding: '10px 20px',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.3s',
-                }}
-              >
-                Logout
-              </Button>
-            </div>
           </Toolbar>
         </AppBar>
         <br></br>
@@ -169,27 +154,27 @@ function DashboardLayout({ id }) {
                     </CardContent>
                   </Card>
                 </Grid>
+
+
                 <Grid item xs={12}>
                   <Card className="card">
                     <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        <Button onClick={handleOpenTransactionHistoryDialog} className="transaction-button">
-                          Transaction History
+                      <Typography>
+                        <Button
+                          style={{
+                            backgroundColor: '#401664',
+                            color: '#fff',
+                            padding: '14px 200px',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s',
+                            
+                          }}
+                          component={Link}
+                          to="/loan-history"
+                          variant="contained"
+                        >
+                          Loan History
                         </Button>
-                        <Dialog open={openTransactionHistoryDialog} onClose={handleCloseTransactionHistoryDialog}>
-                          <DialogTitle>Transaction History</DialogTitle>
-                          <DialogContent>
-                            {/* Render your transaction history data here */}
-                            {transactionHistory.map((item) => (
-                              <div key={item.id}>
-                                {/* Render each transaction item */}
-                              </div>
-                            ))}
-                          </DialogContent>
-                          <DialogActions>
-                            <Button onClick={handleCloseTransactionHistoryDialog}>Close</Button>
-                          </DialogActions>
-                        </Dialog>
                       </Typography>
                     </CardContent>
                   </Card>
