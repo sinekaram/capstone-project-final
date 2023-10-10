@@ -92,7 +92,7 @@
   
   /* Submit button hover styles */
   .payment-button:hover {
-    background-color: #4b2167; /* Darker violet on hover */
+    background-color: #c5a0df; /* Darker violet on hover */
   }
   
   /* Confirmation message styles */
@@ -105,4 +105,12 @@
     text-align: center;
     font-size: 16px;
   }
-  
+  /* Add this to your CSS file, or create a new CSS file if you don't have one */
+.full-payment-error {
+  color: #fff; /* Text color */
+  background-color: #e77d7d; /* Background color */
+  padding: 5px; /* Padding around the error message */
+  border: 1px solid #d8bebe; /* Border around the error message */
+  border-radius: 5px; /* Rounded corners for the error message */
+  margin-top: 10px; /* Margin to separate it from other elements */
+}
