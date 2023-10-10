@@ -30,6 +30,9 @@ public class LoanApplicationService {
         return (LoanApplication) loanApplicationRepository.findByemail(email);
     }
 
+    public LoanApplication updateLoan(LoanApplication loan) {
+        return loanApplicationRepository.save(loan);
+    }
 }
 
 

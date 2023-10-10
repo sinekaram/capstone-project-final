@@ -45,13 +45,19 @@ function ApprovedApplications() {
                     <p><strong>Monthly Income:</strong> {application.monthlyIncome}</p>
                     <p><strong>Type of Loan:</strong> {application.typeOfLoan}</p>
                     <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(null)}  
-                                    style={{ backgroundColor: '#572780' }}>
+                                    style={{ backgroundColor: '#572780' }}
+                                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
+                                     
                       Close
                     </Button>
                   </>
                 ) : (
                   <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}
-                  style={{ backgroundColor: '#572780', marginLeft:'50px' }}>
+                  style={{ backgroundColor: '#572780' }}
+                  onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
+                    
                     More Info
                   </Button>
                 )}

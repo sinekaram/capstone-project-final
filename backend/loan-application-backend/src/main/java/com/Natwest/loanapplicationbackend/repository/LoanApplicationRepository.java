@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface LoanApplicationRepository extends MongoRepository<LoanApplication, String> {
 
+    LoanApplication findByemail(String email);
 }

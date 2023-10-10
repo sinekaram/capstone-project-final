@@ -4,7 +4,6 @@ import { Fragment } from "react";
 import Home from "./Components/Pages/Home";
 import { BrowserRouter as Router, Switch, Route, Routes} from 'react-router-dom';
 import FAQ from "./Components/Pages/FAQ";
-import Contact from "./Components/Pages/Contact";
 import EmiCalculator from "./Components/Pages/EmiCalculator";
 import CustomerSupport from "./Components/Pages/CustomerSupport";
 import Payment from "./Components/Pages/Payment";
@@ -38,7 +37,6 @@ function App() {
         <Route path="/emiCalculator" element={<EmiCalculator/>}/>
         <Route path="/register" element={<Register />} />
         <Route path="customerSupport" element={<CustomerSupport/>}/>
-        <Route path="contact" element={<Contact/>}/>
         <Route path="/payment" element={<Payment/>}/>
         <Route path="/userdashboard" element={<DashboardLayout />} />
         <Route path="/userdashboard/loantypes" element={<LoanTypes />} />

@@ -21,6 +21,8 @@ const LoanApplicationForm = () => {
     loanAmount: '',
     typeOfLoan: 'personalLoan',
     loanTerm: '',
+    balanceAmount: '',
+
   });
 
   const [validationErrors, setValidationErrors] = useState({
@@ -71,6 +73,9 @@ const LoanApplicationForm = () => {
     setFormData({
       ...formData,
       [name]: value,
+      balanceAmount: formData.loanAmount,
+      [name]:value,
+      paidAmount: formData.paidAmount,
     });
   };
 
@@ -83,6 +88,7 @@ const LoanApplicationForm = () => {
       if (
         Object.values(validationErrors).filter((error) => error !== null).length === 0
       ) {
+
         // Send form data to the backend API for processing
         await axios.post(`${API_URL}/apply-for-loan`, formData);
 
@@ -101,6 +107,8 @@ const LoanApplicationForm = () => {
           loanAmount: '',
           typeOfLoan: 'personalLoan',
           loanTerm: '',
+          balanceAmount: '',
+          paidAmount:'',
         });
       } else {
         Object.values(validationErrors).forEach((error) => {
@@ -208,4 +216,3 @@ return (
 };
 
 export default LoanApplicationForm;
-
