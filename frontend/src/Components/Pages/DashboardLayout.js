@@ -87,25 +87,25 @@ function DashboardLayout({ id }) {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8083/users/${id}`)
-  //     .then((response) => {
-  //       const userData = response.data;
-  //       // You can use userData if needed
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user data:', error);
-  //     });
+  useEffect(() => {
+    axios.get(`http://localhost:8082/users/${id}`)
+      .then((response) => {
+        const userData = response.data;
+        // You can use userData if needed
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
 
-  //   // Fetch payment data and set it in paymentData state here
-  //   Axios.get(`http://localhost:8084/loan-history`) // Replace with your API endpoint
-  //     .then((response) => {
-  //       setPaymentData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching payment data:', error);
-  //     });
-  // }, [id]);
+    // Fetch payment data and set it in paymentData state here
+    axios.get(`http://localhost:8084/loan-history`) // Replace with your API endpoint
+      .then((response) => {
+        setPaymentData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching payment data:', error);
+      });
+  }, [id]);
 
   const handleOpenTransactionHistoryDialog = () => {
     // You should fetch and set transaction history data here
@@ -250,5 +250,6 @@ function DashboardLayout({ id }) {
     </Fragment>
   );
 }
+
 
 export default DashboardLayout;
