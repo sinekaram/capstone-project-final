@@ -45,7 +45,9 @@ function PaymentCard({ paymentData }) {
           Due Date: {paymentData.dueDate || 'N/A'}
         </Typography>
         <div style={{ marginTop: '180px' }}>
-          <Button variant="contained" color="primary" onClick={handleMakePayment}>
+          <Button variant="contained" color="primary" onClick={handleMakePayment}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
             Make a Payment
           </Button>
         </div>
@@ -122,7 +124,7 @@ function DashboardLayout({ id }) {
             <div style={{ marginLeft: 'auto' }}>
               <Button
                 component={Link}
-                to="/home"
+                to="/"
                 variant="contained"
                 style={{
                   backgroundColor: '#401664',
@@ -131,6 +133,8 @@ function DashboardLayout({ id }) {
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                 }}
+                onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
               >
                 Logout
               </Button>
@@ -162,6 +166,8 @@ function DashboardLayout({ id }) {
                           component={Link}
                           to="/apply-for-loan"
                           variant="contained"
+                          onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
                         >
                           Apply for New Loan
                         </Button>
@@ -173,7 +179,9 @@ function DashboardLayout({ id }) {
                   <Card className="card">
                     <CardContent>
                       <Typography variant="h6" gutterBottom>
-                        <Button onClick={handleOpenTransactionHistoryDialog} className="transaction-button">
+                        <Button onClick={handleOpenTransactionHistoryDialog} className="transaction-button"
+                        onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                           Transaction History
                         </Button>
                         <Dialog open={openTransactionHistoryDialog} onClose={handleCloseTransactionHistoryDialog}>
@@ -187,7 +195,9 @@ function DashboardLayout({ id }) {
                             ))}
                           </DialogContent>
                           <DialogActions>
-                            <Button onClick={handleCloseTransactionHistoryDialog}>Close</Button>
+                            <Button onClick={handleCloseTransactionHistoryDialog}
+                            onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                            onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>Close</Button>
                           </DialogActions>
                         </Dialog>
                       </Typography>
@@ -199,7 +209,9 @@ function DashboardLayout({ id }) {
                   <Card className="card">
                     <CardContent>
                       <Typography variant="h6" gutterBottom>
-                        <Button onClick={handleOpenLoanTypesDialog} className="transaction-button">
+                        <Button onClick={handleOpenLoanTypesDialog} className="transaction-button"
+                        onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                           View Loan Types
                         </Button>
                         <Dialog open={openLoanTypesDialog} onClose={handleCloseLoanTypesDialog}>
@@ -208,7 +220,9 @@ function DashboardLayout({ id }) {
                             <LoanTypes /> {/* Render the LoanTypes component here */}
                           </DialogContent>
                           <DialogActions>
-                            <Button onClick={handleCloseLoanTypesDialog}>Close</Button>
+                            <Button onClick={handleCloseLoanTypesDialog}
+                            onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                            onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>Close</Button>
                           </DialogActions>
                         </Dialog>
                       </Typography>

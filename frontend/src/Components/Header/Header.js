@@ -3,11 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link,NavLink } from 'react-router-dom';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FaSignInAlt } from 'react-icons/fa';
 
 
-const TopNavbar = ({onLogin}) => {
+const Header = ({onLogout}) => {
   const navbarStyle = {
     backgroundColor: '#5a287d', // Set the background color to #5a287d
   };
@@ -41,19 +40,13 @@ const TopNavbar = ({onLogin}) => {
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
           </Nav>
           <Nav>
-          <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}  onClick={onLogin}>
-             <FaSignInAlt style={iconStyle} /> Login
+          <Link to="/" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}onClick = {onLogout} >
+           <FaSignInAlt style={iconStyle} /> Logout
             </Link>
-            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              Register <FaSignInAlt style={iconStyle} />
-            </Link>
-
-            {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-            <FaSignInAlt style={iconStyle}/>Login</button> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-export default TopNavbar
+export default Header;

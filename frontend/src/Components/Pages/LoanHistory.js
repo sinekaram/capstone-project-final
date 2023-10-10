@@ -5,7 +5,7 @@ import Header from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:8090/api';
 
 const LoanHistoryDetails = () => {
   const [loanHistory, setLoanHistory] = useState([]);
