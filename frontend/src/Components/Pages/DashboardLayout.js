@@ -18,7 +18,7 @@ import LoanTypes from './LoanTypes';
 import Footer from '../Footer/Footer';
 import TopNavbar from '../Header/TopNavbar';
 import '../css/dashboardlayout.css';
-const API_URL = 'http://localhost:8084/api';
+const API_URL = 'http://localhost:8090/api';
 const email = sessionStorage.getItem("email"); // Retrieve email from session storage
 
 function PaymentCard({ paymentData }) {
@@ -30,7 +30,7 @@ function PaymentCard({ paymentData }) {
   const [balanceAmount, setBalanceAmount] = useState(0);
   const [paidAmount, setPaidAmount] = useState(0);
   axios
-  .get(`${API_URL}/${email}`)
+  .get(`${API_URL}/loan/${email}`)
   .then((response) => {
     console.log("API Response:", response.data);
     const loanData = response.data;
@@ -67,9 +67,9 @@ function PaymentCard({ paymentData }) {
             Balance Loan Amount: {balanceAmount || 'N/A'}
           </Typography>
         </div>
-        <Typography variant="body2">
+        {/* <Typography variant="body2">
           Due Date: {paymentData.dueDate || 'N/A'}
-        </Typography>
+        </Typography> */}
         <div style={{ marginTop: '180px' }}>
           <Button variant="contained" color="primary" onClick={handleMakePayment}
           onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
