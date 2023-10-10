@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const API_URL = 'http://localhost:8090/api';
 
 const LoanApplicationForm = () => {
+  const [balanceAmount, setBalanceAmount] = useState('');
+  const [paidAmount, setPaidAmount] = useState('');
   const [formData, setFormData] = useState({
     // Define your form fields here
     firstName: '',
@@ -78,7 +80,7 @@ const LoanApplicationForm = () => {
       paidAmount: formData.paidAmount,
     });
   };
-
+ 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
