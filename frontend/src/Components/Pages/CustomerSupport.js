@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import TopNavbar from '../Header/TopNavbar'
 import Footer from '../Footer/Footer'
 import '../css/CustomerSupport.css'
+import Header from '../Header/Header';
+
+
 const peopleData = [
   {
     name: 'Satinder Kaur',
@@ -20,13 +23,22 @@ const peopleData = [
     email: 'sneha@example.com',
     whatsapp: '84756253627',
   },
+  {
+    name: 'Siddhant',
+    email: 'siddhantarya@gmail.com',
+    whatsapp: '7043412169',
+  },
 ];
+
+const email = sessionStorage.getItem('email');
+
 
 
 const CustomerSupport = () => {
   return (
+    <div>
     <Fragment>
-<TopNavbar/>
+   {email?<Header/>:<TopNavbar/>}
     <Container maxWidth="md" className="customer-support-container">
       <Typography variant="h8" component="h1" align="center" gutterBottom className="customer-support-heading">
         Customer Support
@@ -83,8 +95,9 @@ const CustomerSupport = () => {
 
       </Grid>
     </Container>
-    <Footer/>
     </Fragment>
+        <Footer/>
+    </div>
 
   )
 }

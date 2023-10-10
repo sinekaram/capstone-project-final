@@ -3,11 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link,NavLink } from 'react-router-dom';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FaSignInAlt } from 'react-icons/fa';
 
 
-const TopNavbar = ({onLogin}) => {
+const Header = () => {
   const navbarStyle = {
     backgroundColor: '#5a287d', // Set the background color to #5a287d
   };
@@ -17,6 +16,10 @@ const TopNavbar = ({onLogin}) => {
   };
   const iconStyle = {
     marginRight: '8px', // Adjust the margin as needed
+  };
+  const handleLogout = () => {
+    // Clear session storage when the "Logout" button is clicked
+    sessionStorage.clear();
   };
   return (
     
@@ -34,26 +37,20 @@ const TopNavbar = ({onLogin}) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/" className="nav-link">Home</NavLink>
+            <NavLink to="/userdashboard" className="nav-link">Home</NavLink>
             <NavLink to="/about" className="nav-link">About</NavLink>
             <NavLink to="/faq" className="nav-link">FAQs</NavLink>
             <NavLink to="/emiCalculator" className="nav-link">EMI Calculator</NavLink>
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
           </Nav>
           <Nav>
-          <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}  onClick={onLogin}>
-             <FaSignInAlt style={iconStyle} /> Login
+          <Link to="/" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }} onClick={handleLogout}>
+           <FaSignInAlt style={iconStyle} /> Logout
             </Link>
-            <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              Register <FaSignInAlt style={iconStyle} />
-            </Link>
-
-            {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-            <FaSignInAlt style={iconStyle}/>Login</button> */}
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse> 
       </Container>
     </Navbar>
   );
 }
-export default TopNavbar
+export default Header;

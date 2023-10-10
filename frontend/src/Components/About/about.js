@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Container, Typography, Paper, Box } from '@mui/material';
 import TopNavbar from '../Header/TopNavbar';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 function About() {
@@ -202,6 +203,8 @@ function About() {
     marginRight: '50px',
     marginLeft: '30px',
   };
+  
+  const email = sessionStorage.getItem('email');
   // const handleContinue = () => {
   //   if (!email || !password) {
   //     setError("Enter all the fields");
@@ -211,7 +214,7 @@ function About() {
 
   return (
     <Fragment>
-      <TopNavbar/>
+      {email?<Header/>:<TopNavbar/>}
     <Container>
       
       <Box pt={10}>
@@ -321,7 +324,7 @@ function About() {
       <Box pt={3}>
         <Paper elevation={3} style={StudentLoanStyle}>
           <Typography variant="h5" gutterBottom style={studentloan}>
-            Sudent Loan
+            Student Loan
           </Typography>
           <div style={textContainerStyle4}>
             <Typography variant="body1">

@@ -5,6 +5,7 @@ import '../css/faq.css';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Header from '../Header/Header'
 
 
 const FAQ = () => {
@@ -14,7 +15,7 @@ const FAQ = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8081/banking/faq/data')
+      .get('http://localhost:8085/banking/faq/data')
       .then((response) => setFaqs(response.data))
       .catch((error) => console.error('Error fetching FAQ data:', error));
   }, []);
@@ -43,9 +44,12 @@ const FAQ = () => {
     return text.replace(regex, '<span class="highlight">$1</span>');
   };
 
+  const email = sessionStorage.getItem('email');
+
+
   return (
     <Fragment>
-      <TopNavbar />
+      {email?<Header/>:<TopNavbar/>}
       <div className="faq-header">
         <h2 style={{ color: '#5a287d', marginRight: '10px' }}>General FAQs</h2>
         <div className="search-bar">

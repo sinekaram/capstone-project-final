@@ -71,8 +71,8 @@ const Payment = () => {
   useEffect(() => {
     const fetchLoanAmount = async () => {
       try {
-        // const response = await axios.get(`http://localhost:8080/api/loan/${email}`);
-        const response = await axios.get(`http://localhost:8080/api/loan/19bcs2464@gmail.com`);
+        const response = await axios.get(`http://localhost:8090/api/loan/${email}`);
+        // const response = await axios.get(`http://localhost:8090/api/loan/19bcs2464@gmail.com`);
         setLoanType(response.data.typeOfLoan);
         setLoanAmount(response.data.loanAmount);
         setBalanceAmount(response.data.balanceAmount);
@@ -172,7 +172,7 @@ const Payment = () => {
         newBalanceAmount: newBalanceAmount,
         newPaidAmount: newPaidAmount,
       };
-      await axios.put(`http://localhost:8080/api/loan/${email}/update-payment`, updatedUserData);
+      await axios.put(`http://localhost:8090/api/loan/${email}/update-payment`, updatedUserData);
       setShowSuccessPopup(true);
 
     } catch (error) {
