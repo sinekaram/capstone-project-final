@@ -64,11 +64,11 @@ function LoanApplications() {
 
   return (
     <div>
-      <h2 >Loan Applications</h2>
+      <h2 style={{ color: '#431c53', alignSelf: 'Center' }}>Loan Applications</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
         {pendingLoanApplications.map(application => (
           <div key={application.id} style={{ width: '30%', marginBottom: '20px' }}>
-            <Card style={{ backgroundColor: '#FEDFE2' }}>
+            <Card style={{ backgroundColor: '#f0f0f0' }}>
               <CardContent>
                 <p><strong>Name:</strong> {application.firstName} {application.lastName}</p>
                 <p><strong>Email:</strong> {application.email}</p>

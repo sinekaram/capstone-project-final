@@ -12,7 +12,6 @@ import {
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import CloseIcon from '@mui/icons-material/Close';
-import { useReducer } from 'react';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
 
@@ -23,7 +22,6 @@ function Login() {
   const [error, setError] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  
   const handleContinue = () => {
     if (!email || !password) {
       setError("Enter all the fields");
@@ -39,8 +37,6 @@ function Login() {
     axios.post("http://localhost:8081/users/authenticate", user)
       .then((response) => {
         if (response.data === "admin" || response.data === "customer") {
-          alert("Login Successful");
-          
           axios.post("http://localhost:8081/users/getId", user).then((resp) => {
             sessionStorage.setItem("id", resp.data);
             sessionStorage.setItem("email", email);
@@ -179,7 +175,7 @@ function Login() {
         `}
       </style>
     </Container>
-    <Footer></Footer>
+    <Footer/>
     </Fragment>
   );
 }

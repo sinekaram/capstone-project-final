@@ -18,6 +18,8 @@ import LoanTypes from './LoanTypes';
 import Footer from '../Footer/Footer';
 import TopNavbar from '../Header/TopNavbar';
 import '../css/dashboardlayout.css';
+import Header from '../Header/Header';
+
 const API_URL = 'http://localhost:8090/api';
 const email = sessionStorage.getItem("email"); // Retrieve email from session storage
 
@@ -140,14 +142,14 @@ function DashboardLayout({ id }) {
 
   return (
     <Fragment>
-      <TopNavbar />
+      <Header/>
       <div className="dashboard-container">
         <AppBar position="static" className="app-bar">
           <Toolbar className="centered-text">
             <Typography variant="h4" className="app-title">
               Welcome Back {user.firstName} {user.lastName}
             </Typography>
-            <div style={{ marginLeft: 'auto' }}>
+            {/* <div style={{ marginLeft: 'auto' }}>
               <Button
                 component={Link}
                 to="/login"
@@ -164,7 +166,7 @@ function DashboardLayout({ id }) {
               >
                 Logout
               </Button>
-            </div>
+            </div> */}
           </Toolbar>
         </AppBar>
         <br></br>

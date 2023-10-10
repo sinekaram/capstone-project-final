@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../css/LoanApplicationForm.css';
 import axios from 'axios';
 import Footer from "../Footer/Footer";
-import Header from "../Header/TopNavbar";
+import Header from "../Header/Header";
 import {ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -75,7 +75,7 @@ const LoanApplicationForm = () => {
     setFormData({
       ...formData,
       [name]: value,
-      balanceAmount: formData.loanAmount,
+      balanceAmount: formData.loanAmount*0.8,
       [name]:value,
       paidAmount: formData.paidAmount,
     });
