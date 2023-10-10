@@ -18,20 +18,16 @@ public class LoanApplicationService {
         return loanApplicationRepository.save(loanApplication);
     }
 
-    public List<LoanApplication> getAllLoans() {
-        return loanApplicationRepository.findAll();
-    }
+//    public List<LoanApplication> getAllLoans() {
+//        return loanApplicationRepository.findAll();
+//    }
 
-    public Optional<LoanApplication> getLoanById(String id) {
-        return loanApplicationRepository.findById(id);
-    }
 
-    public void deleteLoan(String id) {
-        loanApplicationRepository.deleteById(id);
-    }
-
+//    public void deleteLoan(String id) {
+//        loanApplicationRepository.deleteById(id);
+//    }
     public LoanApplication getLoanByEmail(String email) {
-        return loanApplicationRepository.findByemail(email);
+        return (LoanApplication) loanApplicationRepository.findByemail(email);
     }
 
     public LoanApplication updateLoan(LoanApplication loan) {

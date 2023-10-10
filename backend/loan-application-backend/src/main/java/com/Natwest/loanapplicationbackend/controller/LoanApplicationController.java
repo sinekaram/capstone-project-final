@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 @RequestMapping("/api")
 public class LoanApplicationController {
 
@@ -38,18 +38,6 @@ public class LoanApplicationController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/loan/{email}")
-    public ResponseEntity<LoanApplication> getLoanByEmail(@PathVariable String email){
-        LoanApplication loan = loanApplicationService.getLoanByEmail(email);
-        if(loan != null){
-            System.out.println("in");
-            return ResponseEntity.ok(loan);
-        }
-        else{
-            return ResponseEntity.notFound().build();
-        }
-    }
-
 
     @DeleteMapping("/loan-history/{id}")
     public ResponseEntity<Void> deleteLoan(@PathVariable String id) {

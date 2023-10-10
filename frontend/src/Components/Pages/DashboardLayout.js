@@ -12,18 +12,38 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import { Link } from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 import LoanTypes from './LoanTypes';
 import Footer from '../Footer/Footer';
 import TopNavbar from '../Header/TopNavbar';
 import '../css/dashboardlayout.css';
+const API_URL = 'http://localhost:8084/api';
+const email = sessionStorage.getItem("email"); // Retrieve email from session storage
 
 function PaymentCard({ paymentData }) {
   const handleMakePayment = () => {
     // Redirect to the '/payment' page when the button is clicked
     window.location.href = '/payment';
   };
+  const [loanAmount, setLoanAmount] = useState(0);
+  const [balanceAmount, setBalanceAmount] = useState(0);
+  const [paidAmount, setPaidAmount] = useState(0);
+  axios
+  .get(`${API_URL}/${email}`)
+  .then((response) => {
+    console.log("API Response:", response.data);
+    const loanData = response.data;
+    
+    // Set the state variables
+    setLoanAmount(loanData.loanAmount);
+    setBalanceAmount(loanData.balanceAmount);
+    setPaidAmount(loanData.paidAmount);
+
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
 
   return (
     <Card className="payment-details-card">
@@ -33,12 +53,18 @@ function PaymentCard({ paymentData }) {
         </Typography>
         <div style={{ marginBottom: '16px' }}>
           <Typography variant="body2">
-            Total Loan Amount: {paymentData.totalAmount || 'N/A'}
+            Total Loan Amount: {loanAmount || 'N/A'}
+          </Typography>
+        </div>
+        
+        <div style={{ marginBottom: '16px' }}>
+          <Typography variant="body2">
+            Paid Loan Amount: {paidAmount || 'N/A'}
           </Typography>
         </div>
         <div style={{ marginBottom: '16px' }}>
           <Typography variant="body2">
-            Paid Loan Amount: {paymentData.paidAmount || 'N/A'}
+            Balance Loan Amount: {balanceAmount || 'N/A'}
           </Typography>
         </div>
         <Typography variant="body2">
@@ -63,25 +89,25 @@ function DashboardLayout({ id }) {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
 
-  useEffect(() => {
-    Axios.get(`http://localhost:8082/users/${id}`)
-      .then((response) => {
-        const userData = response.data;
-        // You can use userData if needed
-      })
-      .catch((error) => {
-        console.error('Error fetching user data:', error);
-      });
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8083/users/${id}`)
+  //     .then((response) => {
+  //       const userData = response.data;
+  //       // You can use userData if needed
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching user data:', error);
+  //     });
 
-    // Fetch payment data and set it in paymentData state here
-    Axios.get(`http://localhost:8080/loan-history`) // Replace with your API endpoint
-      .then((response) => {
-        setPaymentData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching payment data:', error);
-      });
-  }, [id]);
+  //   // Fetch payment data and set it in paymentData state here
+  //   Axios.get(`http://localhost:8084/loan-history`) // Replace with your API endpoint
+  //     .then((response) => {
+  //       setPaymentData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching payment data:', error);
+  //     });
+  // }, [id]);
 
   const handleOpenTransactionHistoryDialog = () => {
     // You should fetch and set transaction history data here

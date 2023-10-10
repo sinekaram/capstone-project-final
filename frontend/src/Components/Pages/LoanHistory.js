@@ -19,7 +19,7 @@ const LoanHistoryDetails = () => {
     }
 
     axios
-      .get(`${API_URL}/loan-history?email=${email}`) // Pass email as a query parameter
+      .get(`${API_URL}/loan-history/${email}`) // Use template string and insert email
       .then((response) => {
         const dataWithEMI = response.data.map((loan) => {
           const principal = parseFloat(loan.loanAmount);
