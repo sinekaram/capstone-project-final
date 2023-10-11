@@ -20,7 +20,7 @@ function LoanApplications() {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:8083/loan_applications/admin")
+      .get("http://localhost:8082/loan_applications/admin")
       .then((response) => {
         const pendingApplications = response.data.filter(
           (application) => !application.approvalStatus
