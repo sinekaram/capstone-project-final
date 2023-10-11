@@ -81,18 +81,26 @@ function LoanApplications() {
                     <p><strong>Phone Number:</strong> {application.mobileNumber}</p>
                     <p><strong>Monthly Income:</strong> {application.monthlyIncome}</p>
                     <p><strong>Type of Loan:</strong> {application.typeOfLoan}</p>
-                    <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}>
+                    <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}
+                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                       Close
                     </Button>
-                    <Button variant="contained" color="primary" onClick={() => handleAccept(application.id)}>
+                    <Button variant="contained" color="primary" onClick={() => handleAccept(application.id)}
+                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                       Accept
                     </Button>
-                    <Button variant="contained" color="secondary" onClick={() => handleReject(application.id)}>
+                    <Button variant="contained" color="secondary" onClick={() => handleReject(application.id)}
+                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                       Reject
                     </Button>
                   </>
                 ) : (
-                  <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}>
+                  <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}
+                  onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
                     More Info
                   </Button>
                 )}

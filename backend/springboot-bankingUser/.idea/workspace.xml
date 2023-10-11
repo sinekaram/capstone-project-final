@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57619cbe-26f9-44ce-b83a-583e015f0a99" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../loan-application-backend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../backend.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/AdminDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/AdminDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/ApprovedApplications.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/ApprovedApplications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/LoanApplications.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/LoanApplications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Footer/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Header/TopNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Header/TopNavbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/css/payment.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +60,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project-final/backend/loan-application-backend",
+    "git-widget-placeholder": "Merging main",
+    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project-final/backend/springboot-bankingFAQ",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +92,8 @@
       <workItem from="1696395601417" duration="11020000" />
       <workItem from="1696481300763" duration="1946000" />
       <workItem from="1696858906465" duration="4432000" />
-      <workItem from="1696908894333" duration="2100000" />
+      <workItem from="1696908894333" duration="6450000" />
+      <workItem from="1697014649392" duration="4156000" />
     </task>
     <servers />
   </component>
