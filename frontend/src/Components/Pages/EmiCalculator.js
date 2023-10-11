@@ -65,7 +65,8 @@ const EmiCalculator = () => {
 
 
   return (
-    <div>
+    
+      <div className="page-background">
        {email?<Header/>:<TopNavbar/>}
         <div className="emi-calculator">
       <h2>EMI Calculator</h2>

@@ -36,7 +36,7 @@ const email = sessionStorage.getItem('email');
 
 const CustomerSupport = () => {
   return (
-    <div>
+    <div className="cust-page">
     <Fragment>
    {email?<Header/>:<TopNavbar/>}
     <Container maxWidth="md" className="customer-support-container">

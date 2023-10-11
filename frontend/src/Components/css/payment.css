@@ -114,3 +114,14 @@ border: 1px solid #d8bebe; /* Border around the error message */
 border-radius: 5px; /* Rounded corners for the error message */
 margin-top: 10px; /* Margin to separate it from other elements */
 }
+.payment-page {
+  background-image: url('https://av.sc.com/in/content/images/sc-loan-repay-option-1600x490-1.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+ 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Position the background behind the content */
+}
