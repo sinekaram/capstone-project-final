@@ -24,26 +24,26 @@ public class LoanApplicationController {
         return ResponseEntity.ok(savedApplication);
     }
 
-    @GetMapping("/loan-history")
-    public List<LoanApplication> getAllLoanHistory() {
-        return loanApplicationService.getAllLoans();
-    }
+//    @GetMapping("/loan-history")
+//    public List<LoanApplication> getAllLoanHistory() {
+//        return loanApplicationService.getAllLoans();
+//    }
 
-    @GetMapping("/loan-history/{id}")
-    public ResponseEntity<LoanApplication> getLoanById(@PathVariable String id) {
-        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanById(id);
-        if (loanApplication.isPresent()) {
-            return ResponseEntity.ok(loanApplication.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @GetMapping("/loan-history/{id}")
+//    public ResponseEntity<LoanApplication> getLoanById(@PathVariable String id) {
+//        Optional<LoanApplication> loanApplication = loanApplicationService.getLoanById(id);
+//        if (loanApplication.isPresent()) {
+//            return ResponseEntity.ok(loanApplication.get());
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
-    @DeleteMapping("/loan-history/{id}")
-    public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
-        loanApplicationService.deleteLoan(id);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping("/loan-history/{id}")
+//    public ResponseEntity<Void> deleteLoan(@PathVariable String id) {
+//        loanApplicationService.deleteLoan(id);
+//        return ResponseEntity.noContent().build();
+//    }
 
     @PutMapping("/loan/{email}/update-payment")
     public ResponseEntity<LoanApplication> updatePaymentDetails(@PathVariable String email,
@@ -61,5 +61,11 @@ public class LoanApplicationController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/loan-history/{email}")
+    public List<LoanApplication> getLoanHistory(@PathVariable String email) {
+        // Call the service to fetch loan history based on the provided email
+        return loanApplicationService.getLoanHistoryByEmail(email);
+    }
+
 
 }

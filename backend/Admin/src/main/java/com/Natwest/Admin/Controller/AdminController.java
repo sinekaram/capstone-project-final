@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/loan_applications")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class AdminController {
     @Autowired
     private AdminService adminService;

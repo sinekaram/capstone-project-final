@@ -18,25 +18,49 @@ import Footer from '../Footer/Footer';
 import '../css/dashboardlayout.css'; // Include your CSS file here
 import Header from '../Header/Header';
 
-const API_URL = 'http://localhost:8090/api';
+const API_URL = 'http://localhost:8082/api';
 const email = sessionStorage.getItem('email'); // Retrieve email from session storage
+const sid=sessionStorage.getItem('id')
 
 function DashboardLayout({ id }) {
   const user = { id: id };
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
+  const [loanAmount, setLoanAmount] = useState(0);
+  const [balanceAmount, setBalanceAmount] = useState(0);
+  const [paidAmount, setPaidAmount] = useState(0);
+  const [firstName,setFirstName]=useState(0);
+  const[lastName,setLastName]=useState(0);
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/users/${id}`)
+      .get(`${API_URL}/loan-history/${email}`)
+      .then((response) => {
+        const loanData = response.data[0]; // Use [0] because it's an array
+  
+        // Update state variables with fetched data
+        setLoanAmount(loanData.loanAmount);
+        setBalanceAmount(loanData.balanceAmount);
+        setPaidAmount(loanData.paidAmount);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, [email]);
+  
+    axios
+      .get(`http://localhost:8084/register/users/${sid}`)
       .then((response) => {
         const userData = response.data;
         // You can use userData if needed
+        setLastName(userData.lastName);
+        setFirstName(userData.firstName);
+        //console.log("API Response:", userData);
+      
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
       });
-  }, [id]);
+  
 
   const carouselImages = ['/Images/image1.jpg', '/Images/image2.jpg', '/Images/image3.jpg'];
 
@@ -71,26 +95,26 @@ function DashboardLayout({ id }) {
       window.location.href = '/payment';
     };
 
-    const [loanAmount, setLoanAmount] = useState(0);
-    const [balanceAmount, setBalanceAmount] = useState(0);
-    const [paidAmount, setPaidAmount] = useState(0);
+    // const [loanAmount, setLoanAmount] = useState(0);
+    // const [balanceAmount, setBalanceAmount] = useState(0);
+    // const [paidAmount, setPaidAmount] = useState(0);
 
-    useEffect(() => {
-      axios
-        .get(`${API_URL}/loan/${email}`)
-        .then((response) => {
-          console.log('API Response:', response.data);
-          const loanData = response.data;
+    // useEffect(() => {
+    //   axios
+    //     .get(`${API_URL}/loan-history/${email}`)
+    //     .then((response) => {
+    //       console.log('API Response:', response.data);
+    //       const loanData = response.data;
 
-          // Set the state variables
-          setLoanAmount(loanData.loanAmount);
-          setBalanceAmount(loanData.balanceAmount);
-          setPaidAmount(loanData.paidAmount);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
-    }, [email]);
+    //       // Set the state variables
+    //       setLoanAmount(loanData.loanAmount);
+    //       setBalanceAmount(loanData.balanceAmount);
+    //       setPaidAmount(loanData.paidAmount);
+    //     })
+    //     .catch((error) => {
+    //       console.error('Error fetching data:', error);
+    //     });
+    // }, [email]);
 
     return (
       <Card className="dashboard-card">
@@ -136,7 +160,7 @@ function DashboardLayout({ id }) {
         <AppBar position="static" className="app-bar" style={{ backgroundColor: 'white' }}>
           <Toolbar className="centered-text">
             <Typography variant="h4" className="app-title" style={{ color: 'black' }}>
-              Welcome Back {user.firstName} {user.lastName}
+              Welcome Back {firstName} {lastName}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -249,6 +273,7 @@ function DashboardLayout({ id }) {
     </Fragment>
   );
 }
+
 
 export default DashboardLayout;
 

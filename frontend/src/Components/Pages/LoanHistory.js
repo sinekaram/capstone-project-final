@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header'
 
 
-const API_URL = 'http://localhost:8090/api';
+const API_URL = 'http://localhost:8083/api';
 
 const LoanHistoryDetails = () => {
   const [loanHistory, setLoanHistory] = useState([]);
@@ -20,7 +20,7 @@ const LoanHistoryDetails = () => {
     } 
 
     axios
-      .get(`${API_URL}/loan-history?email=${email}`) // Pass email as a query parameter
+      .get(`${API_URL}/loan-history/${email}`) // Pass email as a query parameter
       .then((response) => {
         const dataWithEMI = response.data.map((loan) => {
           const principal = parseFloat(loan.loanAmount);

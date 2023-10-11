@@ -33,6 +33,11 @@ public class LoanApplicationService {
     public LoanApplication updateLoan(LoanApplication loan) {
         return loanApplicationRepository.save(loan);
     }
+    public List<LoanApplication> getLoanHistoryByEmail(String email) {
+        // Implement the logic to fetch loan history based on the provided email
+        // You can use methods from the loanRepository to access the database
+        return loanApplicationRepository.findByEmail(email);
+    }
 }
 
 

@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import {ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = 'http://localhost:8090/api';
+const API_URL = 'http://localhost:8083/api';
 
 const LoanApplicationForm = () => {
   const [balanceAmount, setBalanceAmount] = useState('');

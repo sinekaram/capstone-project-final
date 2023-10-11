@@ -50,7 +50,7 @@ function RegistrationForm() {
 
     try {
       // Send a POST request to your Spring Boot API
-      const response = await axios.post('http://localhost:8083/register/users/register', formData);
+      const response = await axios.post('http://localhost:8084/register/users/register', formData);
 
       if (response.status === 201) {
         console.log('Registration successful');

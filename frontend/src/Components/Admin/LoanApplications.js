@@ -20,7 +20,7 @@ function LoanApplications() {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:8080/loan_applications/admin")
+      .get("http://localhost:8082/loan_applications/admin")
       .then((response) => {
         const pendingApplications = response.data.filter(
           (application) => !application.approvalStatus
@@ -39,7 +39,7 @@ function LoanApplications() {
   const handleAccept = (id) => {
     // Send a request to update the approvalStatus to true for the specified application
     axios
-      .put(`http://localhost:8080/loan_applications/admin/${id}`, {
+      .put(`http://localhost:8082/loan_applications/admin/${id}`, {
         approvalStatus: true,
       })
       .then((response) => {

@@ -15,7 +15,7 @@ const FAQ = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8085/banking/faq/data')
+      .get('http://localhost:8086/banking/faq/data')
       .then((response) => setFaqs(response.data))
       .catch((error) => console.error('Error fetching FAQ data:', error));
   }, []);
