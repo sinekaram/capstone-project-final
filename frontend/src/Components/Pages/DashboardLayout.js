@@ -12,40 +12,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import Axios from 'axios';
 
 import LoanTypes from './LoanTypes';
 import Footer from '../Footer/Footer';
-import TopNavbar from '../Header/TopNavbar';
-import '../css/dashboardlayout.css';
 import Header from '../Header/Header';
-
-const API_URL = 'http://localhost:8090/api';
-const email = sessionStorage.getItem("email"); // Retrieve email from session storage
+import '../css/dashboardlayout.css';
 
 function PaymentCard({ paymentData }) {
   const handleMakePayment = () => {
     // Redirect to the '/payment' page when the button is clicked
     window.location.href = '/payment';
   };
-  const [loanAmount, setLoanAmount] = useState(0);
-  const [balanceAmount, setBalanceAmount] = useState(0);
-  const [paidAmount, setPaidAmount] = useState(0);
-  axios
-    .get(`${API_URL}/loan/${email}`)
-    .then((response) => {
-      console.log("API Response:", response.data);
-      const loanData = response.data;
-
-      // Set the state variables
-      setLoanAmount(loanData.loanAmount);
-      setBalanceAmount(loanData.balanceAmount);
-      setPaidAmount(loanData.paidAmount);
-
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
 
   return (
     <Card className="payment-details-card">
@@ -55,27 +33,19 @@ function PaymentCard({ paymentData }) {
         </Typography>
         <div style={{ marginBottom: '16px' }}>
           <Typography variant="body2">
-            Total Loan Amount: {loanAmount || 'N/A'}
-          </Typography>
-        </div>
-
-        <div style={{ marginBottom: '16px' }}>
-          <Typography variant="body2">
-            Paid Loan Amount: {paidAmount || 'N/A'}
+            Total Loan Amount: {paymentData.totalAmount || 'N/A'}
           </Typography>
         </div>
         <div style={{ marginBottom: '16px' }}>
           <Typography variant="body2">
-            Balance Loan Amount: {balanceAmount || 'N/A'}
+            Paid Loan Amount: {paymentData.paidAmount || 'N/A'}
           </Typography>
         </div>
-        {/* <Typography variant="body2">
+        <Typography variant="body2">
           Due Date: {paymentData.dueDate || 'N/A'}
-        </Typography> */}
+        </Typography>
         <div style={{ marginTop: '180px' }}>
-          <Button variant="contained" color="primary" onClick={handleMakePayment}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
+          <Button variant="contained" color="primary" onClick={handleMakePayment}>
             Make a Payment
           </Button>
         </div>
@@ -91,8 +61,9 @@ function DashboardLayout({ id }) {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [openLoanTypesDialog, setOpenLoanTypesDialog] = useState(false);
 
+
   useEffect(() => {
-    axios.get(`http://localhost:8083/users/${id}`)
+    Axios.get(`http://localhost:8082/users/${id}`)
       .then((response) => {
         const userData = response.data;
         // You can use userData if needed
@@ -100,16 +71,16 @@ function DashboardLayout({ id }) {
       .catch((error) => {
         console.error('Error fetching user data:', error);
       });
-    },[id]);
-  //   // Fetch payment data and set it in paymentData state here
-  //   Axios.get(`http://localhost:8084/loan-history`) // Replace with your API endpoint
-  //     .then((response) => {
-  //       setPaymentData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching payment data:', error);
-  //     });
-  // }, [id]);
+
+    // Fetch payment data and set it in paymentData state here
+    Axios.get(`http://localhost:8080/loan-history`) // Replace with your API endpoint
+      .then((response) => {
+        setPaymentData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching payment data:', error);
+      });
+  }, [id]);
 
   const handleOpenTransactionHistoryDialog = () => {
     // You should fetch and set transaction history data here
@@ -142,31 +113,13 @@ function DashboardLayout({ id }) {
 
   return (
     <Fragment>
-      <Header/>
+      <Header />
       <div className="dashboard-container">
         <AppBar position="static" className="app-bar">
           <Toolbar className="centered-text">
             <Typography variant="h4" className="app-title">
               Welcome Back {user.firstName} {user.lastName}
             </Typography>
-            {/* <div style={{ marginLeft: 'auto' }}>
-              <Button
-                component={Link}
-                to="/login"
-                variant="contained"
-                style={{
-                  backgroundColor: '#401664',
-                  color: '#fff',
-                  padding: '10px 20px',
-                  cursor: 'pointer',
-                  transition: 'background-color 0.3s',
-                }}
-                onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
-              >
-                Logout
-              </Button>
-            </div> */}
           </Toolbar>
         </AppBar>
         <br></br>
@@ -176,7 +129,7 @@ function DashboardLayout({ id }) {
             <Grid item xs={12} md={6}>
               <PaymentCard paymentData={paymentData} />
             </Grid>
-
+  
             <Grid item xs={12} md={6}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -194,8 +147,6 @@ function DashboardLayout({ id }) {
                           component={Link}
                           to="/apply-for-loan"
                           variant="contained"
-                          onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                          onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
                         >
                           Apply for New Loan
                         </Button>
@@ -203,43 +154,37 @@ function DashboardLayout({ id }) {
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid item xs={12}>
-                  <Card className="card">
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        <Button onClick={handleOpenTransactionHistoryDialog} className="transaction-button"
-                          onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                          onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
-                          Transaction History
-                        </Button>
-                        <Dialog open={openTransactionHistoryDialog} onClose={handleCloseTransactionHistoryDialog}>
-                          <DialogTitle>Transaction History</DialogTitle>
-                          <DialogContent>
-                            {/* Render your transaction history data here */}
-                            {transactionHistory.map((item) => (
-                              <div key={item.id}>
-                                {/* Render each transaction item */}
-                              </div>
-                            ))}
-                          </DialogContent>
-                          <DialogActions>
-                            <Button onClick={handleCloseTransactionHistoryDialog}
-                              onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>Close</Button>
-                          </DialogActions>
-                        </Dialog>
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
+
 
                 <Grid item xs={12}>
                   <Card className="card">
                     <CardContent>
+                      <Typography>
+                        <Button
+                          style={{
+                            backgroundColor: '#401664',
+                            color: '#fff',
+                            padding: '14px 200px',
+                            cursor: 'pointer',
+                            transition: 'background-color 0.3s',
+                            
+                          }}
+                          component={Link}
+                          to="/loan-history"
+                          variant="contained"
+                        >
+                          Loan History
+                        </Button>
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+  
+                <Grid item xs={12}>
+                  <Card className="card">
+                    <CardContent>
                       <Typography variant="h6" gutterBottom>
-                        <Button onClick={handleOpenLoanTypesDialog} className="transaction-button"
-                          onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                          onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
+                        <Button onClick={handleOpenLoanTypesDialog} className="transaction-button">
                           View Loan Types
                         </Button>
                         <Dialog open={openLoanTypesDialog} onClose={handleCloseLoanTypesDialog}>
@@ -248,9 +193,7 @@ function DashboardLayout({ id }) {
                             <LoanTypes /> {/* Render the LoanTypes component here */}
                           </DialogContent>
                           <DialogActions>
-                            <Button onClick={handleCloseLoanTypesDialog}
-                              onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>Close</Button>
+                            <Button onClick={handleCloseLoanTypesDialog}>Close</Button>
                           </DialogActions>
                         </Dialog>
                       </Typography>
