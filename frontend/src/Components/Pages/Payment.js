@@ -211,7 +211,7 @@ const Payment = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 11 }, (_, i) => currentYear + i);
   return (
-    <Fragment>
+    <div className="payment-page">
       <TopNavbar />
       <Container fluid className="payment-container">
         <h1 className="payment-heading">Loan Payment</h1>
@@ -426,7 +426,7 @@ const Payment = () => {
           onClose={() => setShowSuccessPopup(false)}
         />
       )}
-    </Fragment>
+    </div>
   );
 };
 

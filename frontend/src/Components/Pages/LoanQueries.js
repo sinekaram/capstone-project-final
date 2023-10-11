@@ -3,13 +3,12 @@ import { Card, CardContent, Typography, Grid, Container, Button } from '@mui/mat
 import { Link } from 'react-router-dom';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
+import loanQueries from '../css/loanQueries.css' 
 
 const LoanQueriesFAQ = () => {
   const faqItems = [
     {
       heading: 'Personal Loan:',
-    },
-    {
       question: 'What is a personal loan?',
       answer: 'A personal loan is an unsecured loan that you can use for various personal expenses such as medical bills, debt consolidation, travel, or home improvements.',
     },
@@ -87,6 +86,7 @@ const LoanQueriesFAQ = () => {
   return (
     <Fragment>
         <TopNavbar/>
+        <div className="loan-queries-faq-container">
     <Container style={{ paddingTop: '70px', paddingLeft: '130px' }}>
       <h1>Frequently Asked Questions</h1>
       <Grid container spacing={2}>
@@ -109,11 +109,15 @@ const LoanQueriesFAQ = () => {
         ))}
       </Grid>
       {/* Back button */}
-      <Button component={Link} to="/customersupport" variant="contained" style={{ backgroundColor: '#401664', marginTop: '20px' }}>
+      <Button component={Link} to="/customersupport" variant="contained" style={{
+         backgroundColor: '#401664',
+          marginTop: '20px',
+          marginBottom:'20px',
+          marginLeft:'475px', }}>
         Back
       </Button>
     </Container>
-
+    </div>
     <Footer/>
     </Fragment>
   );

@@ -126,7 +126,7 @@ const LoanApplicationForm = () => {
   };
 
 return (
-  <div>
+  <div className="loan-application-page">
     <Header />
     <ToastContainer />
     <div className="loan-application-form">

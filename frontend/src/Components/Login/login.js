@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router';
 import CloseIcon from '@mui/icons-material/Close';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
+import login from '../css/login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -69,7 +70,7 @@ function Login() {
   };
 
   return (
-    <Fragment>
+    <div className="page-background">
       <TopNavbar></TopNavbar>
     <Container maxWidth="sm">
       <div className="styled-box">
@@ -175,8 +176,10 @@ function Login() {
         `}
       </style>
     </Container>
+    
     <Footer/>
-    </Fragment>
+    </div>
+    
   );
 }
 
