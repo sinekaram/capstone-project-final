@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react'
 import TopNavbar from '../Header/TopNavbar'
 import Footer from '../Footer/Footer';
 import '../css/Home.css'; // Import your CSS file for styling
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import { Link } from 'react-router-dom';
 
 
@@ -99,6 +99,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
       <section className="banking-section">
         <div className="banking-content">
           <h2>Apply for a new Loan Now!</h2>
@@ -115,30 +116,47 @@ const Home = () => {
             <button className="btn-primary">Apply Now</button>
           </Link>
         </div>
-
+        <div className="banking-image">
+          <img
+           src="https://www.natwest.com/content/dam/natwest/personal/loans/article/resized/image.dim.480.nw-pers-photo-couple-breakfast-table-article.jpg" 
+           alt="Your Image" 
+           width={800}
+           />
+        </div>
       </section>
-      <div className="chart-container">
+
+      <div className='page-container'>
+        <div className="chart-container">
+
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+              <CartesianGrid stroke="transparent" />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} />
+              <YAxis hide="true" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="ratings" fill="#d33737" barSize={40}>
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`} />
+                ))}
+              </Bar>
+            </BarChart>
+
+          </ResponsiveContainer>
+        </div>
         <div className="chart-description">
           <h2>Banking Ratings</h2>
           <p>
-            This chart displays the ratings for different banking categories. We are committed to providing top-notch banking services to meet your financial needs and ensure your financial success.The 5 most important banking services are checking and savings accounts, loan and mortgage services, wealth management, providing Credit and Debit Cards, Overdraft services. You can read about the Types of Banks in India – Category and Functions of Banks in India in the given link.
+            This chart displays the ratings for different banking categories. 
+            We are committed to providing top-notch banking services to meet 
+            your financial needs and ensure your financial success.The 5 most 
+            important banking services are checking and 
+            savings accounts, loan and mortgage services, wealth management,
+             providing Credit and Debit Cards, Overdraft services. You can read about
+              the Types of Banks in India – Category and Functions of Banks in India in 
+              the given link.
           </p>
         </div>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-            <CartesianGrid stroke="transparent" />
-            <XAxis dataKey="name" axisLine={false} tickLine={false} />
-            <YAxis hide="true" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="ratings" fill="#d33737" barSize={40}>
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`} />
-              ))}
-            </Bar>
-          </BarChart>
-
-        </ResponsiveContainer>
       </div>
       <div className="image1-container">
         <div className="image1-description">
