@@ -7,7 +7,7 @@ function RejectedApplications() {
   const [expandedUserIds, setExpandedUserIds] = useState([]);
 
   const fetchData = () => {
-    axios.get("http://localhost:8080/loan_applications/admin")
+    axios.get("http://localhost:8082/loan_applications/admin")
       .then((response) => {
         const rejectedApplications = response.data.filter(application => !application.approvalStatus);
         setRejectedLoanApplications(rejectedApplications);
@@ -23,7 +23,7 @@ function RejectedApplications() {
 
   const handleAccept = (id) => {
     // Send a request to update the approvalStatus to true for the specified application
-    axios.put(`http://localhost:8080/loan_applications/admin/${id}`, { approvalStatus: true })
+    axios.put(`http://localhost:8082/loan_applications/admin/${id}`, { approvalStatus: true })
       .then((response) => {
         // Update the UI to reflect the change
         const updatedApplications = rejectedLoanApplications.filter(application => application.id !== id);

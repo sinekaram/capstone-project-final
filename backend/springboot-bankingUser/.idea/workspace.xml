@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57619cbe-26f9-44ce-b83a-583e015f0a99" name="Changes" comment="" />
+    <list default="true" id="57619cbe-26f9-44ce-b83a-583e015f0a99" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Admin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/repository/LoanApplicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/repository/LoanApplicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/services/LoanApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/java/com/Natwest/loanapplicationbackend/services/LoanApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/controller/LoanApplicationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/repository/LoanApplicationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/repository/LoanApplicationRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/services/LoanApplicationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../loan-application-backend/target/classes/com/Natwest/loanapplicationbackend/services/LoanApplicationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../register-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../register-backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-bankingFAQ/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../springboot-bankingFAQ/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Natwest/springbootbankingUser/Controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Natwest/springbootbankingUser/Controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/ApprovedApplications.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/ApprovedApplications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/LoanApplications.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/LoanApplications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Admin/RejectedApplications.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Admin/RejectedApplications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/DashboardLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/DashboardLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/FAQ.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/FAQ.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/LoanApplicationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/LoanApplicationForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/LoanHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/LoanHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Components/Pages/Register.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +44,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,24 +66,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/sinek/IdeaProjects/capstone-project/springboot-bankingUser/springboot-bankingUser",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "61214a5ebadf1a8e57d487c8ec26a506",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/capstone-project-final/backend/springboot-bankingUser&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;61214a5ebadf1a8e57d487c8ec26a506&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="SpringbootBankingUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />

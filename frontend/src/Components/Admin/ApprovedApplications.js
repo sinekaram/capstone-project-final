@@ -10,7 +10,7 @@ function ApprovedApplications() {
   const [expandedUserId, setExpandedUserId] = useState(null);
 
   const fetchData = () => {
-    axios.get("http://localhost:8080/loan_applications/admin")
+    axios.get("http://localhost:8082/loan_applications/admin")
       .then((response) => {
         const Applications = response.data.filter(application => application.approvalStatus);
         setAcceptedLoanApplications(Applications);

@@ -61,5 +61,11 @@ public class LoanApplicationController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/loan-history/{email}")
+    public List<LoanApplication> getLoanHistory(@PathVariable String email) {
+        // Call the service to fetch loan history based on the provided email
+        return loanApplicationService.getLoanHistoryByEmail(email);
+    }
+
 
 }

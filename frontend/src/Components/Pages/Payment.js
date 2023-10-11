@@ -71,7 +71,8 @@ const Payment = () => {
   useEffect(() => {
     const fetchLoanAmount = async () => {
       try {
-        const response = await axios.get(`http://localhost:8090/api/loan/${email}`);
+        const response = await axios.get(`http://localhost:8083/api/loan-hisory/${email}`);
+        console.log(response.data);
         // const response = await axios.get(`http://localhost:8090/api/loan/19bcs2464@gmail.com`);
         setLoanType(response.data.typeOfLoan);
         setLoanAmount(response.data.loanAmount);
@@ -142,7 +143,7 @@ const Payment = () => {
 
     try {
       // Send a POST request to your backend endpoint
-      const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
+      const response = axios.post('http://localhost:8085/banking/payment', paymentInfo);
 
 
 
