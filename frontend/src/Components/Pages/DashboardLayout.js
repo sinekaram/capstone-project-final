@@ -19,8 +19,7 @@ import '../css/dashboardlayout.css'; // Include your CSS file here
 import Header from '../Header/Header';
 
 const API_URL = 'http://localhost:8090/api';
-const email = sessionStorage.getItem("email"); // Retrieve email from session storage
-
+const email = sessionStorage.getItem('email'); // Retrieve email from session storage
 
 function DashboardLayout({ id }) {
   const user = { id: id };
@@ -28,7 +27,8 @@ function DashboardLayout({ id }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
-    axios.get(`http://localhost:8082/users/${id}`)
+    axios
+      .get(`http://localhost:8082/users/${id}`)
       .then((response) => {
         const userData = response.data;
         // You can use userData if needed
@@ -36,14 +36,9 @@ function DashboardLayout({ id }) {
       .catch((error) => {
         console.error('Error fetching user data:', error);
       });
-    },[id]);
+  }, [id]);
 
-
-  const carouselImages = [
-    '/Images/image1.jpg',
-  '/Images/image2.jpg',
-  '/Images/image3.jpg',
-  ];
+  const carouselImages = ['/Images/image1.jpg', '/Images/image2.jpg', '/Images/image3.jpg'];
 
   const handleNextImage = () => {
     setSelectedImageIndex((prevIndex) =>
@@ -69,6 +64,70 @@ function DashboardLayout({ id }) {
     sessionStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 
+  // Payment details component
+  function PaymentCard({ paymentData }) {
+    const handleMakePayment = () => {
+      // Redirect to the '/payment' page when the button is clicked
+      window.location.href = '/payment';
+    };
+
+    const [loanAmount, setLoanAmount] = useState(0);
+    const [balanceAmount, setBalanceAmount] = useState(0);
+    const [paidAmount, setPaidAmount] = useState(0);
+
+    useEffect(() => {
+      axios
+        .get(`${API_URL}/loan/${email}`)
+        .then((response) => {
+          console.log('API Response:', response.data);
+          const loanData = response.data;
+
+          // Set the state variables
+          setLoanAmount(loanData.loanAmount);
+          setBalanceAmount(loanData.balanceAmount);
+          setPaidAmount(loanData.paidAmount);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    }, [email]);
+
+    return (
+      <Card className="dashboard-card">
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Payment Details
+          </Typography>
+          <div style={{ marginBottom: '16px' }}>
+            <Typography variant="body2">
+              Total Loan Amount: {loanAmount || 'N/A'}
+            </Typography>
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <Typography variant="body2">
+              Paid Loan Amount: {paidAmount || 'N/A'}
+            </Typography>
+          </div>
+          <div style={{ marginBottom: '16px' }}>
+            <Typography variant="body2">
+              Balance Loan Amount: {balanceAmount || 'N/A'}
+            </Typography>
+          </div>
+          <div style={{ marginTop: '40px' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleMakePayment}
+              onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
+            >
+              Make a Payment
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Fragment>
@@ -76,7 +135,7 @@ function DashboardLayout({ id }) {
       <div className="dashboard-container">
         <AppBar position="static" className="app-bar" style={{ backgroundColor: 'white' }}>
           <Toolbar className="centered-text">
-            <Typography variant="h4" className="app-title" style={{color:'black'}}> 
+            <Typography variant="h4" className="app-title" style={{ color: 'black' }}>
               Welcome Back {user.firstName} {user.lastName}
             </Typography>
           </Toolbar>
@@ -86,19 +145,25 @@ function DashboardLayout({ id }) {
             <Grid item xs={12}>
               {/* Image Carousel */}
               <div className="image-carousel">
-          <button className="carousel-button" onClick={handlePreviousImage}>
-            &lt; {/* Left arrow */}
-          </button>
-          <img
-            src={carouselImages[selectedImageIndex]}
-            alt={`Image ${selectedImageIndex + 1}`}
-          />
-          <button className="carousel-button" onClick={handleNextImage}>
-            &gt; {/* Right arrow */}
-          </button>
-        </div>
-      </Grid>
-            <Grid item xs={4}>
+                <button className="carousel-button" onClick={handlePreviousImage}>
+                  &lt; {/* Left arrow */}
+                </button>
+                <img
+                  src={carouselImages[selectedImageIndex]}
+                  alt={`Image ${selectedImageIndex + 1}`}
+                />
+                <button className="carousel-button" onClick={handleNextImage}>
+                  &gt; {/* Right arrow */}
+                </button>
+              </div>
+            </Grid>
+
+            <Grid item xs={3}>
+              {/* Container for Make a Payment */}
+              <PaymentCard />
+            </Grid>
+
+            <Grid item xs={3}>
               {/* Container for Apply Loan */}
               <Card className="dashboard-card">
                 <CardContent>
@@ -118,7 +183,7 @@ function DashboardLayout({ id }) {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               {/* Container for Loan History */}
               <Card className="dashboard-card">
                 <CardContent>
@@ -129,7 +194,7 @@ function DashboardLayout({ id }) {
                   </p>
                   <Button
                     component={Link}
-                    to="/loan-history" 
+                    to="/loan-history"
                     variant="contained"
                     style={{ backgroundColor: '#5a287d', color: 'white' }}
                   >
@@ -138,7 +203,7 @@ function DashboardLayout({ id }) {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               {/* Container for Types of Loan */}
               <Card className="dashboard-card">
                 <CardContent>
@@ -153,24 +218,27 @@ function DashboardLayout({ id }) {
                     style={{
                       backgroundColor: '#5a287d',
                       color: 'white',
-                      fontSize: '14px', 
+                      fontSize: '14px',
                       padding: '5px 0',
-                  }}
+                    }}
                   >
                     Explore
                   </Button>
                   <Dialog open={openLoanTypesDialog} onClose={handleCloseLoanTypesDialog}>
-                          <DialogTitle>Loan Types</DialogTitle>
-                          <DialogContent>
-                            <LoanTypes />
-                          </DialogContent>
-                          <DialogActions>
-                            <Button onClick={handleCloseLoanTypesDialog}
-                              onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>Close</Button>
-                          </DialogActions>
-                        </Dialog>
-
+                    <DialogTitle>Loan Types</DialogTitle>
+                    <DialogContent>
+                      <LoanTypes />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        onClick={handleCloseLoanTypesDialog}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
+                      >
+                        Close
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                 </CardContent>
               </Card>
             </Grid>
@@ -184,3 +252,4 @@ function DashboardLayout({ id }) {
 
 
 export default DashboardLayout;
+
