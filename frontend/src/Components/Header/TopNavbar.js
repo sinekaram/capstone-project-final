@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FaSignInAlt } from 'react-icons/fa';
 
 
-const TopNavbar = () => {
+const TopNavbar = ({onLogin}) => {
   const navbarStyle = {
     backgroundColor: '#5a287d', // Set the background color to #5a287d
   };
@@ -41,13 +41,15 @@ const TopNavbar = () => {
             <NavLink to="/customerSupport" className="nav-link">Customer Support</NavLink>
           </Nav>
           <Nav>
-          <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              <FaSignInAlt style={iconStyle} /> Login
+          <Link to="/login" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}  onClick={onLogin}>
+             <FaSignInAlt style={iconStyle} /> Login
             </Link>
-            
             <Link to="/register" className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
-              <FaSignInAlt style={iconStyle} /> Register
+              Register <FaSignInAlt style={iconStyle} />
             </Link>
+
+            {/* <button className="btn btn-light" style={{ backgroundColor: '#5a287d', color: 'white' }}>
+            <FaSignInAlt style={iconStyle}/>Login</button> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

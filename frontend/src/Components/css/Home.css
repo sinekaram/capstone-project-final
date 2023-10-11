@@ -1,6 +1,7 @@
 /* Home.css */
 
 /* Content Container */
+
 .content-container {
   background-color: #5a287d;
   color: white;
@@ -62,13 +63,26 @@
   text-align: center; /* Center the text horizontally */
 }
 .banking-content {
+  flex: 1;
+  padding: 20px;
   max-width: 800px; /* Set a maximum width for the content */
 }
 /* Section Titles */
 h1 {
   font-size: 2rem;
 }
+.banking-image {
+  flex: 1;
+  background: transparent;
+  text-align: right; /* Align the image to the right */
+}
 
+.banking-image img {
+  margin-right: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 /* Section Content */
 p {
   font-size: 1.2rem;
@@ -117,6 +131,8 @@ p {
 
 /* Chart Container */
 .chart-container {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
   padding: 20px;
   background-color: #ffffff;
@@ -144,17 +160,45 @@ p {
 /* Style for the chart description */
 .chart-description {
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .chart-description h2 {
   color: #5a287d;
-  font-size: 24px;
+  font-size: 40px;
+  margin-top: 0px;
+}
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 5px;
+}
+
+.chart-container {
+  flex: 1; /* Takes up half of the available space */
+}
+
+.description-container {
+  flex: 1; /* Takes up half of the available space */
+  padding: 20px;
 }
 
 .chart-description p {
-  font-size: 16px;
+  font-size: 1.1rem;
   color: #666;
   line-height: 1.5;
+}
+.chart {
+  flex: 1;
+  padding: 20px;
+}
+
+.chart-description {
+  flex: 1;
+  padding: 20px;
 }
 
 /* Style for the chart itself (you might need to adjust this based on your chart library's CSS) */
@@ -188,6 +232,7 @@ p {
 
 /* Styling for each image container */
 .image-container {
+  margin-bottom: 50px;
   width: 200px; /* Set the desired width */
   margin: 10px; /* Add margin around each image */
   position: relative; 
@@ -196,6 +241,7 @@ p {
 
 /* Styling for images within image containers */
 .image-container img {
+  margin-bottom: 50px;
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -217,7 +263,7 @@ p {
 
 /* Styling for links within image descriptions */
 .image-description a {
-  margin-top: 10px;
+  margin-top: 20px;
   color: #5a287d; /* Link color within the description */
   text-decoration: underline; /* Underline the links */
 }

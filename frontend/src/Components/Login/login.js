@@ -12,9 +12,9 @@ import {
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import CloseIcon from '@mui/icons-material/Close';
-import { useReducer } from 'react';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
+import login from '../css/login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -38,7 +38,6 @@ function Login() {
     axios.post("http://localhost:8081/users/authenticate", user)
       .then((response) => {
         if (response.data === "admin" || response.data === "customer") {
-          alert("Login Successful");
           axios.post("http://localhost:8081/users/getId", user).then((resp) => {
             sessionStorage.setItem("id", resp.data);
             sessionStorage.setItem("email", email);
@@ -71,7 +70,7 @@ function Login() {
   };
 
   return (
-    <Fragment>
+    <div className="page-background">
       <TopNavbar></TopNavbar>
     <Container maxWidth="sm">
       <div className="styled-box">
@@ -177,8 +176,10 @@ function Login() {
         `}
       </style>
     </Container>
-    <Footer></Footer>
-    </Fragment>
+    
+    <Footer/>
+    </div>
+    
   );
 }
 

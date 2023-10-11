@@ -1,8 +1,12 @@
 
 
 .form-container {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  background-image: url('https://av.sc.com/in/content/images/sc-loan-repay-option-1600x490-1.jpg');
+  background-size: 100% 100%; /* Optional: This ensures the image covers the entire container */
+  background-repeat: no-repeat;
+  padding: 20px;
+  
+  padding-right: 20%; /* Optional: Prevents the image from repeating */
 }
 
 .register-card {

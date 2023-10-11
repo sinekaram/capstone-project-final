@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Grid, Container, Button } from '@mui/mat
 import { Link } from 'react-router-dom';
 import TopNavbar from '../Header/TopNavbar';
 import Footer from '../Footer/Footer';
+import loanQueries from '../css/loanQueries.css';
 
 const LoanQueriesFAQ = () => {
   const faqItems = [
@@ -83,38 +84,69 @@ const LoanQueriesFAQ = () => {
     }
   ];
 
- 
-  return (
-    <Fragment>
-        <TopNavbar/>
-    <Container style={{ paddingTop: '70px', paddingLeft: '130px' }}>
-      <h1>Frequently Asked Questions</h1>
-      <Grid container spacing={2}>
-        {faqItems.map((item, index) => (
-          <Grid item xs={12} key={index}>
-            <Card style={{ backgroundColor: '#F5F5F5', borderRadius: '8px' }}>
-              <CardContent>
-                {item.heading ? (
-                  <div style={{ padding: '8px', marginBottom: '8px' }}>
-                    <Typography variant="h6" style={{ color: 'black' }}>{item.heading}</Typography>
-                  </div>
-                ) : null}
+
+
+  const renderFAQ = () => {
+    const groupedFAQs = [];
+    let currentGroup = null;
+
+    for (const item of faqItems) {
+      if (item.heading) {
+        if (currentGroup) {
+          groupedFAQs.push(currentGroup);
+        }
+        currentGroup = { heading: item.heading, items: [] };
+      } else {
+        currentGroup.items.push(item);
+      }
+    }
+
+    if (currentGroup) {
+      groupedFAQs.push(currentGroup);
+    }
+
+    return groupedFAQs.map((group, index) => (
+      <Grid item xs={12} key={index}>
+        <Card style={{ backgroundColor: '#F5F5F5', borderRadius: '8px' }}>
+          <CardContent>
+            <div style={{ padding: '8px', marginBottom: '8px' }}>
+              <Typography variant="h4" style={{ color: '#F78E99' }}>{group.heading}</Typography>
+            </div>
+            {group.items.map((item, index) => (
+              <div key={index}>
                 <Typography variant="h6">{item.question}</Typography>
                 <Typography variant="body2" color="textSecondary">
                   {item.answer}
                 </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       </Grid>
-      {/* Back button */}
-      <Button component={Link} to="/customersupport" variant="contained" style={{ backgroundColor: '#401664', marginTop: '20px' }}>
-        Back
-      </Button>
-    </Container>
+    ));
+  };
 
-    <Footer/>
+  return (
+    <Fragment>
+      <TopNavbar />
+      <div className="loan-queries-faq-container">
+        <Container style={{ paddingTop: '70px', paddingLeft: '130px' }}>
+          <h1>Frequently Asked Questions</h1>
+          <Grid container spacing={2}>
+            {renderFAQ()}
+          </Grid>
+          {/* Back button */}
+          <Button component={Link} to="/customersupport" variant="contained" style={{
+            backgroundColor: '#401664',
+            marginTop: '20px',
+            marginLeft: '475px',
+            marginBottom: '20px'
+          }}>
+            Back
+          </Button>
+        </Container>
+      </div>
+      <Footer />
     </Fragment>
   );
 };

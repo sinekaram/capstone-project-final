@@ -1,5 +1,15 @@
 /* customersupport.css */
+.cust-page {
+  background-image: url('https://av.sc.com/in/content/images/sc-loan-repay-option-1600x490-1.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Position the background behind the content */
+}
 .customer-support-container {
     margin-top: 70px; /* Adjust the margin-top as needed to move the content downward */
     margin-bottom: 50px; /* Add margin to the bottom of the content */

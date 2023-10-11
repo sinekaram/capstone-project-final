@@ -18,24 +18,25 @@ public class LoanApplicationService {
         return loanApplicationRepository.save(loanApplication);
     }
 
-    public List<LoanApplication> getAllLoans() {
-        return loanApplicationRepository.findAll();
-    }
+//    public List<LoanApplication> getAllLoans() {
+//        return loanApplicationRepository.findAll();
+//    }
 
-    public Optional<LoanApplication> getLoanById(String id) {
-        return loanApplicationRepository.findById(id);
-    }
 
-    public void deleteLoan(String id) {
-        loanApplicationRepository.deleteById(id);
-    }
-
+//    public void deleteLoan(String id) {
+//        loanApplicationRepository.deleteById(id);
+//    }
     public LoanApplication getLoanByEmail(String email) {
-        return loanApplicationRepository.findByemail(email);
+        return (LoanApplication) loanApplicationRepository.findByemail(email);
     }
 
     public LoanApplication updateLoan(LoanApplication loan) {
         return loanApplicationRepository.save(loan);
+    }
+    public List<LoanApplication> getLoanHistoryByEmail(String email) {
+        // Implement the logic to fetch loan history based on the provided email
+        // You can use methods from the loanRepository to access the database
+        return loanApplicationRepository.findByEmail(email);
     }
 }
 

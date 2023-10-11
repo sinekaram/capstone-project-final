@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Home from "./Components/Pages/Home";
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import FAQ from "./Components/Pages/FAQ";
@@ -24,11 +24,17 @@ import ApprovedApplications from './Components/Admin/ApprovedApplications';
 
 
 function App() {
+
   return (
     <Fragment>
+<<<<<<< HEAD
 
       <Routes>
 
+=======
+      <Routes>
+       
+>>>>>>> 14d0ca96f2f6c09a2cc778b309cefe40062cec1c
         <Route path="natwestlogo" element={<Home />} />
         <Route path="" element={<Home />} />
         <Route path="faq" element={<FAQ />} />

@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
-import TopNavbar from '../Header/TopNavbar';
+import TopNavbar from '../Header/Header';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -71,8 +71,9 @@ const Payment = () => {
   useEffect(() => {
     const fetchLoanAmount = async () => {
       try {
-        // const response = await axios.get(`http://localhost:8080/api/loan/${email}`);
-        const response = await axios.get(`http://localhost:8080/api/loan/19bcs2464@gmail.com`);
+        const response = await axios.get(`http://localhost:8083/api/loan-hisory/${email}`);
+        console.log(response.data);
+        // const response = await axios.get(`http://localhost:8090/api/loan/19bcs2464@gmail.com`);
         setLoanType(response.data.typeOfLoan);
         setLoanAmount(response.data.loanAmount);
         setBalanceAmount(response.data.balanceAmount);
@@ -142,7 +143,7 @@ const Payment = () => {
 
     try {
       // Send a POST request to your backend endpoint
-      const response = axios.post('http://localhost:8082/banking/payment', paymentInfo);
+      const response = axios.post('http://localhost:8085/banking/payment', paymentInfo);
 
 
 
@@ -172,7 +173,7 @@ const Payment = () => {
         newBalanceAmount: newBalanceAmount,
         newPaidAmount: newPaidAmount,
       };
-      await axios.put(`http://localhost:8080/api/loan/${email}/update-payment`, updatedUserData);
+      await axios.put(`http://localhost:8090/api/loan/${email}/update-payment`, updatedUserData);
       setShowSuccessPopup(true);
 
     } catch (error) {
@@ -211,7 +212,7 @@ const Payment = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 11 }, (_, i) => currentYear + i);
   return (
-    <Fragment>
+    <div className="payment-page">
       <TopNavbar />
       <Container fluid className="payment-container">
         <h1 className="payment-heading">Loan Payment</h1>
@@ -426,7 +427,7 @@ const Payment = () => {
           onClose={() => setShowSuccessPopup(false)}
         />
       )}
-    </Fragment>
+    </div>
   );
 };
 

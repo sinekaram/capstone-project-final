@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Button, Typography } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+} from '@mui/material';
 import axios from 'axios';
+import '../css/LoanApplications.css';
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
 
 function LoanApplications() {
-  const [loanApplication, setLoanApplication] = useState([]);
   const [pendingLoanApplications, setPendingLoanApplications] = useState([]);
   const [expandedUserIds, setExpandedUserIds] = useState([]);
 
   const fetchData = () => {
-    axios.get("http://localhost:8080/loan_applications/admin")
+    axios
+      .get("http://localhost:8082/loan_applications/admin")
       .then((response) => {
-        setLoanApplication(response.data);
-        const pendingApplications = response.data.filter(application => !application.approvalStatus);
+        const pendingApplications = response.data.filter(
+          (application) => !application.approvalStatus
+        );
         setPendingLoanApplications(pendingApplications);
       })
       .catch((error) => {
@@ -25,10 +38,15 @@ function LoanApplications() {
 
   const handleAccept = (id) => {
     // Send a request to update the approvalStatus to true for the specified application
-    axios.put(`http://localhost:8080/loan_applications/admin/${id}`, { approvalStatus: true })
+    axios
+      .put(`http://localhost:8082/loan_applications/admin/${id}`, {
+        approvalStatus: true,
+      })
       .then((response) => {
         // Update the UI to reflect the change
-        const updatedApplications = pendingLoanApplications.filter(application => application.id !== id);
+        const updatedApplications = pendingLoanApplications.filter(
+          (application) => application.id !== id
+        );
         setPendingLoanApplications(updatedApplications);
       })
       .catch((error) => {
@@ -38,10 +56,15 @@ function LoanApplications() {
 
   const handleReject = (id) => {
     // Send a request to update the approvalStatus to false for the specified application
-    axios.put(`http://localhost:8080/loan_applications/admin/${id}`, { approvalStatus: false })
+    axios
+      .put(`http://localhost:8080/loan_applications/admin/${id}`, {
+        approvalStatus: false,
+      })
       .then((response) => {
         // Update the UI to reflect the change
-        const updatedApplications = pendingLoanApplications.filter(application => !application.approvalStatus);
+        const updatedApplications = pendingLoanApplications.filter(
+          (application) => !application.approvalStatus
+        );
         setPendingLoanApplications(updatedApplications);
       })
       .catch((error) => {
@@ -51,10 +74,10 @@ function LoanApplications() {
 
   const toggleExpandedUser = (id) => {
     // Toggle the expanded user based on the current state
-    setExpandedUserIds(prevIds => {
+    setExpandedUserIds((prevIds) => {
       if (prevIds.includes(id)) {
         // User is already expanded, so close it
-        return prevIds.filter(prevId => prevId !== id);
+        return prevIds.filter((prevId) => prevId !== id);
       } else {
         // User is not expanded, so open it
         return [...prevIds, id];
@@ -64,51 +87,78 @@ function LoanApplications() {
 
   return (
     <div>
-      <h2 style={{ color: '#431c53', alignSelf: 'Center', marginLeft: '450px' }}>Loan Applications</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-        {pendingLoanApplications.map(application => (
-          <div key={application.id} style={{ width: '30%', marginBottom: '20px' }}>
-            <Card style={{ backgroundColor: '#FEDFE2' }}>
-              <CardContent>
-                <p><strong>Name:</strong> {application.firstName} {application.lastName}</p>
-                <p><strong>Email:</strong> {application.email}</p>
-                <p><strong>Loan Amount:</strong> {application.loanAmount}</p>
-                {expandedUserIds.includes(application.id) ? (
-                  <>
-                    <Typography variant="h6">More Details</Typography>
-                    <p><strong>Aadhaar Card:</strong> {application.aadhaarCard}</p>
-                    <p><strong>Date of Birth:</strong> {application.dob}</p>
-                    <p><strong>Phone Number:</strong> {application.mobileNumber}</p>
-                    <p><strong>Monthly Income:</strong> {application.monthlyIncome}</p>
-                    <p><strong>Type of Loan:</strong> {application.typeOfLoan}</p>
-                    <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}
+      <h2 className="header">
+        Loan Applications
+      </h2>
+      <TableContainer component={Paper} className="table-container">
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>SNo</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Name</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Email</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Loan Amount</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Monthly Income</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Loan Type</TableCell>
+              <TableCell style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {pendingLoanApplications.map((application, index) => (
+              <TableRow key={application.id} className="table-row">
+                <TableCell className="table-cell" style={{ fontSize: '16px', fontWeight: 'bold', color: '#431c53' }}>
+                  {index + 1}
+                </TableCell>
+                <TableCell className="table-cell" style={{ fontSize: '16px', fontWeight: 'bold', color: '#431c53' }}>
+                  {application.firstName} {application.lastName}
+                </TableCell>
+                <TableCell style={{ fontSize: '16px', fontWeight: 'bold', color: 'black' }}>{application.email}</TableCell>
+                <TableCell style={{ fontSize: '16px', fontWeight: 'bold', color: 'black' }}>{application.loanAmount}</TableCell>
+                <TableCell style={{ fontSize: '16px', fontWeight: 'bold', color: 'black' }}>{application.monthlyIncome}</TableCell>
+                <TableCell style={{ fontSize: '16px', fontWeight: 'bold', color: 'black' }}>{application.typeOfLoan}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => toggleExpandedUser(application.id)}
+                    className="button"
                     onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
-                      Close
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={() => handleAccept(application.id)}
-                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
-                      Accept
-                    </Button>
-                    <Button variant="contained" color="secondary" onClick={() => handleReject(application.id)}
-                    onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
-                      Reject
-                    </Button>
-                  </>
-                ) : (
-                  <Button variant="contained" color="primary" onClick={() => toggleExpandedUser(application.id)}
-                  onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
-              onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
-                    More Info
+                    onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}
+                  >
+                    {expandedUserIds.includes(application.id)
+                      ? "Close"
+                      : "More Info"}
                   </Button>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        ))}
-      </div>
+                  {expandedUserIds.includes(application.id) && (
+                    <>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ backgroundColor: 'green' }}
+                        onClick={() => handleAccept(application.id)}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = 'rgb(87, 172, 87)')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = 'green')}
+                      >
+                        Approve
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        style={{ backgroundColor: 'rgb(162, 37, 37)' }}
+                        onClick={() => handleReject(application.id)}
+                        onMouseOver={(e) => (e.target.style.backgroundColor = 'rgb(237, 99, 99)')}
+                        onMouseOut={(e) => (e.target.style.backgroundColor = 'rgb(162, 37, 37)')}
+                      >
+                        Reject
+                      </Button>
+                    </>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }

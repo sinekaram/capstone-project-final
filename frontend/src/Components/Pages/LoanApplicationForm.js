@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import '../css/LoanApplicationForm.css';
 import axios from 'axios';
 import Footer from "../Footer/Footer";
-import Header from "../Header/TopNavbar";
+import Header from "../Header/Header";
 import {ToastContainer, toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:8083/api';
 
 const LoanApplicationForm = () => {
+  const [balanceAmount, setBalanceAmount] = useState('');
+  const [paidAmount, setPaidAmount] = useState('');
   const [formData, setFormData] = useState({
     // Define your form fields here
     firstName: '',
@@ -73,12 +75,12 @@ const LoanApplicationForm = () => {
     setFormData({
       ...formData,
       [name]: value,
-      balanceAmount: formData.loanAmount,
+      balanceAmount: formData.loanAmount*0.8,
       [name]:value,
       paidAmount: formData.paidAmount,
     });
   };
-
+ 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -124,7 +126,7 @@ const LoanApplicationForm = () => {
   };
 
 return (
-  <div>
+  <div className="loan-application-page">
     <Header />
     <ToastContainer />
     <div className="loan-application-form">
@@ -207,7 +209,10 @@ return (
             </select>
           </div>
         
-        <button type="submit">Submit</button>
+        <button type="submit"
+        onMouseOver={(e) => (e.target.style.backgroundColor = '#c5a0df')}
+        onMouseOut={(e) => (e.target.style.backgroundColor = '#5a287d')}>
+          Submit</button>
       </form>
     </div>
     <Footer />

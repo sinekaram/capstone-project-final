@@ -24,16 +24,16 @@ public class PaymentController {
         PaymentInfo savedPayment = paymentService.addPayment(paymentInfo);
         return new ResponseEntity<>(savedPayment, HttpStatus.OK);
     }
-    @GetMapping("/payment/{id}")
-    public Optional<PaymentInfo> getPaymentById(@PathVariable String id){
-        return paymentService.getPaymentById(id);
-    }
+//    @GetMapping("/payment/{id}")
+//    public Optional<PaymentInfo> getPaymentById(@PathVariable String id){
+//        return paymentService.getPaymentById(id);
+//    }
 
-    @GetMapping("/payments/{email}")
-    public ResponseEntity<List<PaymentInfo>> getPaymentsByEmail(@PathVariable String email){
-        List<PaymentInfo> payments = paymentService.getPaymentsByEmail(email);
-        return new ResponseEntity<>(payments,HttpStatus.OK);
-    }
+//    @GetMapping("/payments/{email}")
+//    public ResponseEntity<List<PaymentInfo>> getPaymentsByEmail(@PathVariable String email){
+//        List<PaymentInfo> payments = paymentService.getPaymentsByEmail(email);
+//        return new ResponseEntity<>(payments,HttpStatus.OK);
+//    }
 
 
 }
