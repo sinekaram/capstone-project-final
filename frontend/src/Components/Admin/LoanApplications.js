@@ -139,7 +139,7 @@ function LoanApplications() {
                         onMouseOver={(e) => (e.target.style.backgroundColor = 'rgb(87, 172, 87)')}
                         onMouseOut={(e) => (e.target.style.backgroundColor = 'green')}
                       >
-                        Accept
+                        Approve
                       </Button>
                       <Button
                         variant="contained"
