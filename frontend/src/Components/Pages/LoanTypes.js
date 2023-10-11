@@ -1,8 +1,6 @@
 import React from 'react';
-import { Typography, Card, CardContent, Button, Grid, Fade } from '@mui/material';
 import { Link } from 'react-router-dom';
-import TopNavbar from '../Header/TopNavbar';
-import Footer from '../Footer/Footer';
+import '../css/LoanTypes.css'
 
 function LoanTypes() {
   const loanTypes = [
@@ -23,43 +21,23 @@ function LoanTypes() {
       interestRate: 'Education-focused loan: 3%',
     },
     {
-      name: ' Business Loan',
+      name: 'Business Loan',
       interestRate: 'Support for entrepreneurs: 4.5%',
     },
-   
   ];
 
   return (
-    
-    
-    <div>
-      <Grid container spacing={3}>
-        {loanTypes.map((loan, index) => (
-          <Grid item key={index} xs={20} sm={6} md={4}>
-            <Fade in={true} timeout={500 * (index + 1)}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6">{loan.name}</Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {loan.interestRate}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {loan.term}
-                  </Typography>
-                </CardContent>
-                
-                <Link to="/apply-for-loan">
-                <Button variant="contained" style={{ backgroundColor: '#401664' }}>
-                    Apply for {loan.name}
-                  </Button>
-                </Link>
-              </Card>
-            </Fade>
-          </Grid>
-        ))}
-      </Grid>
+    <div className="loan-types-container">
+      {loanTypes.map((loan, index) => (
+        <div key={index} className="loan-card">
+          <h3 className="loan-title">{loan.name}</h3>
+          <p className="loan-rate">{loan.interestRate}</p>
+          <Link to="/apply-for-loan" className="apply-button">
+            Apply for {loan.name}
+          </Link>
+        </div>
+      ))}
     </div>
-    
   );
 }
 
